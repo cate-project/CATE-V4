@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--<ImageView-->
+    <!--android:id="@+id/imageView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="170dp"-->
+    <!--android:layout_weight="1"-->
+    <!--android:scaleType="centerCrop"-->
+    <!--android:tag="image_tag" />-->
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube_player"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+
+    <LinearLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="#e4e4e4"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:maxLines="2"
+                android:text="Android Name sjdnjas ajsk djak sjdka kaskdjaksdj kjskdjaksj"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/common_black_50"
+                android:textSize="20dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ImageView
+                android:id="@+id/declaration_posting"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/declaration"
+                android:visibility="visible" />
+            <ImageView
+                android:id="@+id/img_left_header"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:onClick="share_btn_pressed"
+                android:scaleType="fitCenter"
+                android:src="@drawable/share"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:maxLines="1"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/common_gray_txt"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageButtonLike"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_thumb_up" />
+
+            <TextView
+                android:id="@+id/countLike"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:onClick="downloadVideo"
+                android:text="0"
+                android:layout_weight="1"
+                android:textColor="@color/common_ec_blue_txt" />
+
+            <ImageView
+                android:id="@+id/imageButtonDisLike"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_thumb_down" />
+
+            <TextView
+                android:id="@+id/countDisLike"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="downloadVideo"
+                android:text="0"
+                android:textColor="@color/common_red_txt" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <!--real image size is 40x50px-->
+
+    <ListView
+        android:id="@+id/commentList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/descText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="댓글을 입력하시오."
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/insertButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입력" />
+    </LinearLayout>
+
+    <!--<ImageView-->
+    <!--android:layout_width="40dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_marginTop="155dp"-->
+    <!--android:layout_marginRight="20dp"-->
+    <!--android:onClick="playVideo"-->
+    <!--android:src="@drawable/play"/>-->
+</LinearLayout>
