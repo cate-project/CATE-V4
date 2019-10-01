@@ -295,6 +295,7 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
         RequestQueue queue = Volley.newRequestQueue(DetailsActivity.this);
         queue.add(commentRequest);
 
+
         insertButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {

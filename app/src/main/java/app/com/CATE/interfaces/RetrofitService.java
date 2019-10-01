@@ -94,6 +94,14 @@ public interface RetrofitService {
     Call<JsonArray> getSearchVideo(
             @Query("target") String target
     );
+
+    @FormUrlEncoded
+    @POST("fow_deleteComment.php")
+    Call<JsonObject> DeleteComment(
+            @Field("video_id") int video_id,
+            @Field("_index") int _index,
+            @Field("username") String username
+    );
 }
 
 

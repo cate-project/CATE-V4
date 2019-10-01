@@ -3,6 +3,7 @@ package app.com.CATE.adapters;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Looper;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -21,6 +22,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import javax.crypto.Cipher;
 import javax.mail.MessagingException;
 import javax.mail.SendFailedException;
 
@@ -29,9 +31,11 @@ import app.com.CATE.GMailSender;
 import app.com.CATE.MainActivity;
 import app.com.CATE.interfaces.RetrofitService;
 import app.com.CATE.models.CommentModel;
+import app.com.CATE.models.YoutubeDataModel;
 import app.com.youtubeapiv3.R;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -58,7 +62,7 @@ public class CommentAdapter extends BaseAdapter {
 
     // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴. : 필수 구현
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final int pos = position;
         final Context context = parent.getContext();
         final CommentModel commentModel = commentList.get(position);
@@ -215,6 +219,31 @@ public class CommentAdapter extends BaseAdapter {
         else{
             delete_comment.setVisibility(View.INVISIBLE);
         }
+        delete_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Retrofit retrofit=new Retrofit.Builder()
+                        .baseUrl(RetrofitService.URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                RetrofitService retrofitService=retrofit.create(RetrofitService.class);
+                Call<JsonObject> call=retrofitService.DeleteComment(Integer.parseInt(commentModel.getVideo_id()),
+                        Integer.parseInt(commentModel.get_index()),MainActivity.strName);
+                call.enqueue(new Callback<JsonObject>() {
+                    @Override
+                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        Toast.makeText(mContext, "정상적으로 삭제가 되었습니다.", Toast.LENGTH_SHORT).show();
+                        commentList.remove(position);
+                        notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonObject> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
         textAuthor.setText(commentModel.getAuthor());
         textDesc.setText(commentModel.getDesc());
         textdate.setText(commentModel.getDate());
