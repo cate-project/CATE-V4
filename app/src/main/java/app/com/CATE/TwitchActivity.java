@@ -63,7 +63,6 @@ public class TwitchActivity extends AppCompatActivity {
     WebView web;
     TextView title;
     ListView listview;
-    int size;
     String userID = "";
     String videoID = "";
     public static int video_index;
@@ -251,8 +250,6 @@ public class TwitchActivity extends AppCompatActivity {
                         CommentModel commentModel = new CommentModel(video_id, author, _index, desc, writetime, commentLike, commentDisLike, status);
                         cListData.add(commentModel);
                     }
-                    if (cListData.isEmpty()) size = 0;
-                    else size = cListData.size();
 
                     CommentAdapter adapter = new CommentAdapter(cListData, TwitchActivity.this);
                     listview.setAdapter(adapter);
@@ -294,8 +291,6 @@ public class TwitchActivity extends AppCompatActivity {
                                 CommentModel commentModel = new CommentModel(video_id, author, _index, desc, writetime, commentLike, commentDisLike, status);
                                 cListData.add(commentModel);
                             }
-                            if (cListData.isEmpty()) size = 0;
-                            else size = cListData.size();
 
                             CommentAdapter adapter = new CommentAdapter(cListData, TwitchActivity.this);
                             listview.setAdapter(adapter);
@@ -304,7 +299,7 @@ public class TwitchActivity extends AppCompatActivity {
                         }
                     }
                 };
-                CommentInsertRequest commentInsertRequest = new CommentInsertRequest(video_index, size + 1, userName, desc, userName, responseListener1);
+                CommentInsertRequest commentInsertRequest = new CommentInsertRequest(video_index, userName, desc, userName, responseListener1);
                 RequestQueue queue = Volley.newRequestQueue(TwitchActivity.this);
                 queue.add(commentInsertRequest);
 

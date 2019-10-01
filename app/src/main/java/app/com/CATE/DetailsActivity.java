@@ -80,7 +80,7 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
     private RecyclerView mList_videos = null;
     ListView listview;
     public static int video_index;
-    int size, u_v_status,likes,dislikes;
+    int  u_v_status,likes,dislikes;
     public static String userName = "";
 
     @Override
@@ -282,8 +282,6 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
                         CommentModel commentModel = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status);
                         cListData.add(commentModel);
                     }
-                    if(cListData.isEmpty()) size = 0;
-                    else size = cListData.size();
 
                     CommentAdapter adapter = new CommentAdapter(cListData,DetailsActivity.this);
                     listview.setAdapter(adapter);
@@ -325,8 +323,6 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
                                 CommentModel commentModel = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status);
                                 cListData.add(commentModel);
                             }
-                            if(cListData.isEmpty()) size = 0;
-                            else size = cListData.size();
 
                             CommentAdapter adapter = new CommentAdapter(cListData,DetailsActivity.this);
                             listview.setAdapter(adapter);
@@ -335,7 +331,7 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
                         }
                     }
                 };
-                CommentInsertRequest commentInsertRequest = new CommentInsertRequest(video_index, size+1, userName, desc,userName, responseListener1);
+                CommentInsertRequest commentInsertRequest = new CommentInsertRequest(video_index,  userName, desc,userName, responseListener1);
                 RequestQueue queue = Volley.newRequestQueue(DetailsActivity.this);
                 queue.add(commentInsertRequest);
 
