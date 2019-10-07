@@ -2,6 +2,7 @@ package app.com.CATE.models;
 
 public class CommentModel {
 
+    private int type;
     private String video_id;
     private String author;
     private String _index;
@@ -14,7 +15,7 @@ public class CommentModel {
     }
 
 
-    public CommentModel(String video_id,String author,String _index, String desc, String date, String commentcountLike, String commentcountDisLike,String status) {
+    public CommentModel(String video_id,String author,String _index, String desc, String date, String commentcountLike, String commentcountDisLike,String status,int type) {
         this.video_id = video_id;
         this.author = author;
         this._index = _index;
@@ -23,6 +24,15 @@ public class CommentModel {
         this.commentcountLike = commentcountLike;
         this.commentcountDisLike = commentcountDisLike;
         this.status = status;
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public String getVideo_id() {

@@ -56,7 +56,7 @@ public class LibraryCommentActivity extends AppCompatActivity {
                         String commentDisLike = commentObject.getString("commentDisLike");
                         String status = commentObject.getString("status");
 
-                        CommentModel commentModel = new CommentModel(video_id, author,_index, desc,writetime,commentLike,commentDisLike,status);
+                        CommentModel commentModel = new CommentModel(video_id, author,_index, desc,writetime,commentLike,commentDisLike,status,0);
                         cListData.add(commentModel);
                     }
                     if(cListData.isEmpty()) size = 0;

@@ -56,6 +56,7 @@ import app.com.CATE.interfaces.RetrofitService;
 import app.com.CATE.models.CommentModel;
 import app.com.CATE.models.YoutubeCommentModel;
 import app.com.CATE.models.YoutubeDataModel;
+import app.com.CATE.requests.BestCommentRequest;
 import app.com.CATE.requests.CommentInsertRequest;
 import app.com.CATE.requests.CommentRequest;
 import app.com.youtubeapiv3.R;
@@ -82,6 +83,9 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
     public static int video_index;
     int  u_v_status,likes,dislikes;
     public static String userName = "";
+
+    final ArrayList<CommentModel> cListData = new ArrayList<>();
+    final ArrayList<CommentModel> cListData2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -258,15 +262,54 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
         final EditText descText = (EditText) findViewById(R.id.descText);
         Button insertButton = (Button) findViewById(R.id.insertButton);
 
-        final Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+        final Response.Listener<String> responseListenerBest = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 try {
+
+                    final Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            try {
+                                if (response.startsWith("ï»¿")) {
+                                    response = response.substring(3);
+                                }
+
+                                JSONArray jsonArray = new JSONArray(response);
+                                for(int i=0; i<jsonArray.length(); i++) {
+                                    JSONObject commentObject = jsonArray.getJSONObject(i);
+                                    String video_id = commentObject.getString("video_id");
+                                    String author = commentObject.getString("author");
+                                    String _index = commentObject.getString("_index");
+                                    String desc = commentObject.getString("desc");
+                                    String writetime = commentObject.getString("writetime");
+                                    String commentLike = commentObject.getString("commentLike");
+                                    String commentDisLike = commentObject.getString("commentDisLike");
+                                    String status = commentObject.getString("status");
+
+                                    CommentModel commentModel = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status,0);
+                                    cListData.add(commentModel);
+                                }
+
+                                CommentAdapter adapter = new CommentAdapter(cListData,DetailsActivity.this);
+                                listview.setAdapter(adapter);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+
+                    final CommentRequest commentRequest = new CommentRequest(video_index, userName,responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(DetailsActivity.this);
+                    queue.add(commentRequest);
+
                     if (response.startsWith("ï»¿")) {
                         response = response.substring(3);
                     }
-                    ArrayList<CommentModel> cListData = new ArrayList<>();
+
                     JSONArray jsonArray = new JSONArray(response);
                     for(int i=0; i<jsonArray.length(); i++) {
                         JSONObject commentObject = jsonArray.getJSONObject(i);
@@ -279,64 +322,105 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
                         String commentDisLike = commentObject.getString("commentDisLike");
                         String status = commentObject.getString("status");
 
-                        CommentModel commentModel = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status);
-                        cListData.add(commentModel);
+                        CommentModel commentModel2 = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status,1);
+                        cListData.add(commentModel2);
                     }
 
-                    CommentAdapter adapter = new CommentAdapter(cListData,DetailsActivity.this);
-                    listview.setAdapter(adapter);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         };
 
-        final CommentRequest commentRequest = new CommentRequest(video_index, userName,responseListener);
-        RequestQueue queue = Volley.newRequestQueue(DetailsActivity.this);
-        queue.add(commentRequest);
+        final BestCommentRequest BestCommentRequest = new BestCommentRequest(video_index, userName,responseListenerBest);
+        RequestQueue queue2 = Volley.newRequestQueue(DetailsActivity.this);
+        queue2.add(BestCommentRequest);
+
+
+
 
 
         insertButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String desc = descText.getText().toString();
+                final String desc = descText.getText().toString();
 
-                final Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+                final Response.Listener<String> responseListenerBest3 = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         try {
+                            final Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+                                        if (response.startsWith("ï»¿")) {
+                                            response = response.substring(3);
+                                        }
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        for(int i=0; i<jsonArray.length(); i++) {
+                                            JSONObject commentObject = jsonArray.getJSONObject(i);
+                                            String video_id = commentObject.getString("video_id");
+                                            String author = commentObject.getString("author");
+                                            String _index = commentObject.getString("_index");
+                                            String desc = commentObject.getString("desc");
+                                            String writetime = commentObject.getString("writetime");
+                                            String commentLike = commentObject.getString("commentLike");
+                                            String commentDisLike = commentObject.getString("commentDisLike");
+                                            String status = commentObject.getString("status");
+
+                                            CommentModel commentModel = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status,0);
+                                            cListData2.add(commentModel);
+                                        }
+
+                                        CommentAdapter adapter = new CommentAdapter(cListData2,DetailsActivity.this);
+                                        listview.setAdapter(adapter);
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            };
+
+                            CommentInsertRequest commentInsertRequest = new CommentInsertRequest(video_index,  userName, desc,userName, responseListener1);
+                            RequestQueue queue = Volley.newRequestQueue(DetailsActivity.this);
+                            queue.add(commentInsertRequest);
+
                             if (response.startsWith("ï»¿")) {
                                 response = response.substring(3);
                             }
-                            ArrayList<CommentModel> cListData = new ArrayList<>();
+
                             JSONArray jsonArray = new JSONArray(response);
                             for(int i=0; i<jsonArray.length(); i++) {
                                 JSONObject commentObject = jsonArray.getJSONObject(i);
                                 String video_id = commentObject.getString("video_id");
                                 String author = commentObject.getString("author");
                                 String _index = commentObject.getString("_index");
-                                String desc = commentObject.getString("desc");
+                                String desc2 = commentObject.getString("desc");
                                 String writetime = commentObject.getString("writetime");
                                 String commentLike = commentObject.getString("commentLike");
                                 String commentDisLike = commentObject.getString("commentDisLike");
                                 String status = commentObject.getString("status");
 
-                                CommentModel commentModel = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status);
-                                cListData.add(commentModel);
+                                CommentModel commentModel2 = new CommentModel(video_id,author,_index, desc2,writetime,commentLike,commentDisLike,status,1);
+                                cListData2.add(commentModel2);
                             }
 
-                            CommentAdapter adapter = new CommentAdapter(cListData,DetailsActivity.this);
-                            listview.setAdapter(adapter);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                CommentInsertRequest commentInsertRequest = new CommentInsertRequest(video_index,  userName, desc,userName, responseListener1);
-                RequestQueue queue = Volley.newRequestQueue(DetailsActivity.this);
-                queue.add(commentInsertRequest);
+
+                final BestCommentRequest BestCommentRequest2 = new BestCommentRequest(video_index, userName,responseListenerBest3);
+                RequestQueue queue3 = Volley.newRequestQueue(DetailsActivity.this);
+                queue3.add(BestCommentRequest2);
+
+
+
 
                 descText.setText(null);
+                cListData2.clear();
             }
         });
     }
@@ -452,122 +536,122 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
         startActivity(Intent.createChooser(sendIntent, "share"));
     }
 
-    public void downloadVideo(View view) {
-        //get the download URL
-        String youtubeLink = ("https://www.youtube.com/watch?v=" + youtubeDataModel.getVideo_id());
-        YouTubeUriExtractor ytEx = new YouTubeUriExtractor(this) {
-            @Override
-            public void onUrisAvailable(String videoID, String videoTitle, SparseArray<YtFile> ytFiles) {
-                if (ytFiles != null) {
-                    int itag = 22;
-                    //This is the download URL
-                    String downloadURL = ytFiles.get(itag).getUrl();
-                    Log.e("download URL :", downloadURL);
-
-                    //now download it like a file
-                    new RequestDownloadVideoStream().execute(downloadURL, videoTitle);
-
-
-                }
-
-            }
-        };
-
-        ytEx.execute(youtubeLink);
-    }
+//    public void downloadVideo(View view) {
+//        //get the download URL
+//        String youtubeLink = ("https://www.youtube.com/watch?v=" + youtubeDataModel.getVideo_id());
+//        YouTubeUriExtractor ytEx = new YouTubeUriExtractor(this) {
+//            @Override
+//            public void onUrisAvailable(String videoID, String videoTitle, SparseArray<YtFile> ytFiles) {
+//                if (ytFiles != null) {
+//                    int itag = 22;
+//                    //This is the download URL
+//                    String downloadURL = ytFiles.get(itag).getUrl();
+//                    Log.e("download URL :", downloadURL);
+//
+//                    //now download it like a file
+//                    new RequestDownloadVideoStream().execute(downloadURL, videoTitle);
+//
+//
+//                }
+//
+//            }
+//        };
+//
+//        ytEx.execute(youtubeLink);
+//    }
 
     private ProgressDialog pDialog;
 
 
-    private class RequestDownloadVideoStream extends AsyncTask<String, String, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(DetailsActivity.this);
-            pDialog.setMessage("Downloading file. Please wait...");
-            pDialog.setIndeterminate(false);
-            pDialog.setMax(100);
-            pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            pDialog.setCancelable(false);
-            pDialog.show();
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            InputStream is = null;
-            URL u = null;
-            int len1 = 0;
-            int temp_progress = 0;
-            int progress = 0;
-            try {
-                u = new URL(params[0]);
-                is = u.openStream();
-                URLConnection huc = (URLConnection) u.openConnection();
-                huc.connect();
-                int size = huc.getContentLength();
-
-                if (huc != null) {
-                    String file_name = params[1] + ".mp4";
-                    String storagePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/YoutubeVideos";
-                    File f = new File(storagePath);
-                    if (!f.exists()) {
-                        f.mkdir();
-                    }
-
-                    FileOutputStream fos = new FileOutputStream(f+"/"+file_name);
-                    byte[] buffer = new byte[1024];
-                    int total = 0;
-                    if (is != null) {
-                        while ((len1 = is.read(buffer)) != -1) {
-                            total += len1;
-                            // publishing the progress....
-                            // After this onProgressUpdate will be called
-                            progress = (int) ((total * 100) / size);
-                            if(progress >= 0) {
-                                temp_progress = progress;
-                                publishProgress("" + progress);
-                            }else
-                                publishProgress("" + temp_progress+1);
-
-                            fos.write(buffer, 0, len1);
-                        }
-                    }
-
-                    if (fos != null) {
-                        publishProgress("" + 100);
-                        fos.close();
-                    }
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (is != null) {
-                    try {
-                        is.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-            pDialog.setProgress(Integer.parseInt(values[0]));
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            if (pDialog.isShowing())
-                pDialog.dismiss();
-        }
-    }
+//    private class RequestDownloadVideoStream extends AsyncTask<String, String, String> {
+//
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//            pDialog = new ProgressDialog(DetailsActivity.this);
+//            pDialog.setMessage("Downloading file. Please wait...");
+//            pDialog.setIndeterminate(false);
+//            pDialog.setMax(100);
+//            pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+//            pDialog.setCancelable(false);
+//            pDialog.show();
+//        }
+//
+//        @Override
+//        protected String doInBackground(String... params) {
+//            InputStream is = null;
+//            URL u = null;
+//            int len1 = 0;
+//            int temp_progress = 0;
+//            int progress = 0;
+//            try {
+//                u = new URL(params[0]);
+//                is = u.openStream();
+//                URLConnection huc = (URLConnection) u.openConnection();
+//                huc.connect();
+//                int size = huc.getContentLength();
+//
+//                if (huc != null) {
+//                    String file_name = params[1] + ".mp4";
+//                    String storagePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/YoutubeVideos";
+//                    File f = new File(storagePath);
+//                    if (!f.exists()) {
+//                        f.mkdir();
+//                    }
+//
+//                    FileOutputStream fos = new FileOutputStream(f+"/"+file_name);
+//                    byte[] buffer = new byte[1024];
+//                    int total = 0;
+//                    if (is != null) {
+//                        while ((len1 = is.read(buffer)) != -1) {
+//                            total += len1;
+//                            // publishing the progress....
+//                            // After this onProgressUpdate will be called
+//                            progress = (int) ((total * 100) / size);
+//                            if(progress >= 0) {
+//                                temp_progress = progress;
+//                                publishProgress("" + progress);
+//                            }else
+//                                publishProgress("" + temp_progress+1);
+//
+//                            fos.write(buffer, 0, len1);
+//                        }
+//                    }
+//
+//                    if (fos != null) {
+//                        publishProgress("" + 100);
+//                        fos.close();
+//                    }
+//                }
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            } finally {
+//                if (is != null) {
+//                    try {
+//                        is.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//            return null;
+//        }
+//
+//        @Override
+//        protected void onProgressUpdate(String... values) {
+//            super.onProgressUpdate(values);
+//            pDialog.setProgress(Integer.parseInt(values[0]));
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String s) {
+//            super.onPostExecute(s);
+//            if (pDialog.isShowing())
+//                pDialog.dismiss();
+//        }
+//    }
 
 
 

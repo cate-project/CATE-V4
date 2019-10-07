@@ -50,6 +50,7 @@ import app.com.CATE.adapters.CommentAdapter;
 import app.com.CATE.interfaces.RetrofitService;
 import app.com.CATE.models.CommentModel;
 import app.com.CATE.models.YoutubeDataModel;
+import app.com.CATE.requests.BestCommentRequest;
 import app.com.CATE.requests.CommentInsertRequest;
 import app.com.CATE.requests.CommentRequest;
 import app.com.youtubeapiv3.R;
@@ -70,7 +71,8 @@ public class TwitchActivity extends AppCompatActivity {
     public static String userName = "";
     TextView textViewName, countLike, countDisLike;
     ImageView imageButtonLike, imageButtonDisLike, declaration_posting;
-
+    final ArrayList<CommentModel> cListData = new ArrayList<>();
+    final ArrayList<CommentModel> cListData2 = new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -226,17 +228,56 @@ public class TwitchActivity extends AppCompatActivity {
         final EditText descText = (EditText) findViewById(R.id.descTextT);
         Button insertButton = (Button) findViewById(R.id.insertButtonT);
 
-        final Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+        final Response.Listener<String> responseListenerBest = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 try {
+
+                    final Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            try {
+                                if (response.startsWith("ï»¿")) {
+                                    response = response.substring(3);
+                                }
+
+                                JSONArray jsonArray = new JSONArray(response);
+                                for(int i=0; i<jsonArray.length(); i++) {
+                                    JSONObject commentObject = jsonArray.getJSONObject(i);
+                                    String video_id = commentObject.getString("video_id");
+                                    String author = commentObject.getString("author");
+                                    String _index = commentObject.getString("_index");
+                                    String desc = commentObject.getString("desc");
+                                    String writetime = commentObject.getString("writetime");
+                                    String commentLike = commentObject.getString("commentLike");
+                                    String commentDisLike = commentObject.getString("commentDisLike");
+                                    String status = commentObject.getString("status");
+
+                                    CommentModel commentModel = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status,0);
+                                    cListData.add(commentModel);
+                                }
+
+                                CommentAdapter adapter = new CommentAdapter(cListData,TwitchActivity.this);
+                                listview.setAdapter(adapter);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+
+                    final CommentRequest commentRequest = new CommentRequest(video_index, userName,responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(TwitchActivity.this);
+                    queue.add(commentRequest);
+
                     if (response.startsWith("ï»¿")) {
                         response = response.substring(3);
                     }
-                    ArrayList<CommentModel> cListData = new ArrayList<>();
+
                     JSONArray jsonArray = new JSONArray(response);
-                    for (int i = 0; i < jsonArray.length(); i++) {
+                    for(int i=0; i<jsonArray.length(); i++) {
                         JSONObject commentObject = jsonArray.getJSONObject(i);
                         String video_id = commentObject.getString("video_id");
                         String author = commentObject.getString("author");
@@ -247,63 +288,105 @@ public class TwitchActivity extends AppCompatActivity {
                         String commentDisLike = commentObject.getString("commentDisLike");
                         String status = commentObject.getString("status");
 
-                        CommentModel commentModel = new CommentModel(video_id, author, _index, desc, writetime, commentLike, commentDisLike, status);
-                        cListData.add(commentModel);
+                        CommentModel commentModel2 = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status,1);
+                        cListData.add(commentModel2);
                     }
 
-                    CommentAdapter adapter = new CommentAdapter(cListData, TwitchActivity.this);
-                    listview.setAdapter(adapter);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         };
 
-        final CommentRequest commentRequest = new CommentRequest(video_index, userName, responseListener);
-        RequestQueue queue = Volley.newRequestQueue(TwitchActivity.this);
-        queue.add(commentRequest);
+        final BestCommentRequest BestCommentRequest = new BestCommentRequest(video_index, userName,responseListenerBest);
+        RequestQueue queue2 = Volley.newRequestQueue(TwitchActivity.this);
+        queue2.add(BestCommentRequest);
 
-        insertButton.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        insertButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String desc = descText.getText().toString();
+                final String desc = descText.getText().toString();
 
-                final Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+                final Response.Listener<String> responseListenerBest3 = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         try {
+                            final Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+                                        if (response.startsWith("ï»¿")) {
+                                            response = response.substring(3);
+                                        }
+                                        JSONArray jsonArray = new JSONArray(response);
+                                        for(int i=0; i<jsonArray.length(); i++) {
+                                            JSONObject commentObject = jsonArray.getJSONObject(i);
+                                            String video_id = commentObject.getString("video_id");
+                                            String author = commentObject.getString("author");
+                                            String _index = commentObject.getString("_index");
+                                            String desc = commentObject.getString("desc");
+                                            String writetime = commentObject.getString("writetime");
+                                            String commentLike = commentObject.getString("commentLike");
+                                            String commentDisLike = commentObject.getString("commentDisLike");
+                                            String status = commentObject.getString("status");
+
+                                            CommentModel commentModel = new CommentModel(video_id,author,_index, desc,writetime,commentLike,commentDisLike,status,0);
+                                            cListData2.add(commentModel);
+                                        }
+
+                                        CommentAdapter adapter = new CommentAdapter(cListData2,TwitchActivity.this);
+                                        listview.setAdapter(adapter);
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            };
+
+                            CommentInsertRequest commentInsertRequest = new CommentInsertRequest(video_index,  userName, desc,userName, responseListener1);
+                            RequestQueue queue = Volley.newRequestQueue(TwitchActivity.this);
+                            queue.add(commentInsertRequest);
+
                             if (response.startsWith("ï»¿")) {
                                 response = response.substring(3);
                             }
-                            ArrayList<CommentModel> cListData = new ArrayList<>();
+
                             JSONArray jsonArray = new JSONArray(response);
-                            for (int i = 0; i < jsonArray.length(); i++) {
+                            for(int i=0; i<jsonArray.length(); i++) {
                                 JSONObject commentObject = jsonArray.getJSONObject(i);
                                 String video_id = commentObject.getString("video_id");
                                 String author = commentObject.getString("author");
                                 String _index = commentObject.getString("_index");
-                                String desc = commentObject.getString("desc");
+                                String desc2 = commentObject.getString("desc");
                                 String writetime = commentObject.getString("writetime");
                                 String commentLike = commentObject.getString("commentLike");
                                 String commentDisLike = commentObject.getString("commentDisLike");
                                 String status = commentObject.getString("status");
 
-                                CommentModel commentModel = new CommentModel(video_id, author, _index, desc, writetime, commentLike, commentDisLike, status);
-                                cListData.add(commentModel);
+                                CommentModel commentModel2 = new CommentModel(video_id,author,_index, desc2,writetime,commentLike,commentDisLike,status,1);
+                                cListData2.add(commentModel2);
                             }
 
-                            CommentAdapter adapter = new CommentAdapter(cListData, TwitchActivity.this);
-                            listview.setAdapter(adapter);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 };
-                CommentInsertRequest commentInsertRequest = new CommentInsertRequest(video_index, userName, desc, userName, responseListener1);
-                RequestQueue queue = Volley.newRequestQueue(TwitchActivity.this);
-                queue.add(commentInsertRequest);
+
+                final BestCommentRequest BestCommentRequest2 = new BestCommentRequest(video_index, userName,responseListenerBest3);
+                RequestQueue queue3 = Volley.newRequestQueue(TwitchActivity.this);
+                queue3.add(BestCommentRequest2);
+
+
+
 
                 descText.setText(null);
+                cListData2.clear();
             }
         });
 

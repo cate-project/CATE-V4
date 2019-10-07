@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bestcomment"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textAuthorB"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:textSize="20dp"
+            android:textColor="#fff000"
+            android:text="author"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/delete_commentB"
+            android:visibility="gone"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:paddingTop="5dp"
+            android:layout_gravity="right"
+            android:src="@drawable/delete"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textDescB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="desc" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textdateB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="date" />
+        <ImageView
+            android:id="@+id/commentLikeB"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_thumb_up" />
+        <TextView
+            android:id="@+id/commentcountLikeB"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:gravity="center"
+            android:onClick="downloadVideo"
+            android:text="0"
+            android:textColor="@color/common_ec_blue_txt" />
+
+        <ImageView
+            android:id="@+id/commentDisLikeB"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_thumb_down" />
+        <TextView
+            android:id="@+id/commentcountDisLikeB"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:gravity="center"
+            android:onClick="downloadVideo"
+            android:text="0"
+            android:textColor="@color/common_red_txt" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <TextView
+            android:id="@+id/declarationB"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:textColor="@color/common_red_txt"
+            android:text="신고하기" />
+
+    </LinearLayout>
+</LinearLayout>

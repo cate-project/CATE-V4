@@ -102,6 +102,13 @@ public interface RetrofitService {
             @Field("_index") int _index,
             @Field("username") String username
     );
+
+    @FormUrlEncoded
+    @POST("fow_bestComment.php")
+    Call<JsonObject> BestComment(
+            @Field("videoId") int video_id,
+            @Field("username") String _index
+    );
 }
 
 
