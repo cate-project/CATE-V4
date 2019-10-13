@@ -14,13 +14,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
+
 import java.util.ArrayList;
 
 import app.com.CATE.models.YoutubeDataModel;
 import app.com.youtubeapiv3.R;
 
 public class MainActivity extends AppCompatActivity {
-    public static String strName;
+    public static String strName,Api;
     private TabLayout tabLayout = null;
     public static ViewPager viewPager = null;
     private Toolbar toolbar = null;
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         category = intent.getStringExtra("Category");
         strName = intent.getStringExtra("userName");
+        Api = intent.getStringExtra("Api");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -111,13 +115,20 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(toolbar, "Account menu pressed", Snackbar.LENGTH_SHORT).show();
                 return true;
             case R.id.menu_logout:// 로그아웃 버튼
+
                 Snackbar.make(toolbar, "Logout menu pressed", Snackbar.LENGTH_SHORT).show();
                 SharedPreferences.Editor editor=LoginActivity.loginInformation.edit();
                 editor.clear();
                 editor.commit();
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+                    UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+                        @Override
+                        public void onCompleteLogout() {
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 return true;
 
         }

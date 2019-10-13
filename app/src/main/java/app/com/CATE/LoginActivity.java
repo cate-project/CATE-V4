@@ -40,7 +40,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button BtnSignUp,btnLogout;
+    Button BtnSignUp;
     CheckBox AutoLogincheck;
     String finalresult;
     public static Context mContext;
@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
         passwordText = (EditText) findViewById(R.id.passwordText);
         final Button loginbtn = (Button) findViewById(R.id.loginbtn);
         BtnSignUp = (Button) findViewById(R.id.btn_signup);
-        btnLogout=(Button) findViewById(R.id.btnLogout);
         AutoLogincheck=findViewById(R.id.AutoLogincheck);
         if(!loginInformation.getString("id","").equalsIgnoreCase("")){
             LoginReq(loginInformation.getString("id",null),loginInformation.getString("password",null));
@@ -78,21 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(registerIntent);
             }
         });
-        btnLogout.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "정상적으로 로그아웃되었습니다.", Toast.LENGTH_SHORT).show();
 
-                UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
-                    @Override
-                    public void onCompleteLogout() {
-                        Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    }
-                });
-            }
-        });
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -218,8 +203,9 @@ public class LoginActivity extends AppCompatActivity {
 
                                     //로그인에 성공했으므로 MenuPage로 넘어감
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    intent.putExtra("userID", result.getId());
-                                    intent.putExtra("userName", result.getNickname());
+                                    intent.putExtra("userID", jsonResponse2.getString("userID"));
+                                    intent.putExtra("userName", jsonResponse2.getString("userName"));
+                                    intent.putExtra("Api", "KAKAO");
 
                                     LoginActivity.this.startActivity(intent);
                                     finish();

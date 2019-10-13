@@ -106,7 +106,7 @@ public class SignupPage_API extends Activity {
                     String API = (String) params[1];
                     String Name = (String) params[2];
 
-                    String link = "http://http://ghkdua1829.dothome.co.kr/fow/fow_post_Api.php";
+                    String link = "http://ghkdua1829.dothome.co.kr/fow/fow_post_Api.php";
                     String data = URLEncoder.encode("Id", "UTF-8") + "=" + URLEncoder.encode(Id, "UTF-8");
                     data += "&" + URLEncoder.encode("API", "UTF-8") + "=" + URLEncoder.encode(API, "UTF-8");
                     data += "&" + URLEncoder.encode("Name", "UTF-8") + "=" + URLEncoder.encode(Name, "UTF-8");
