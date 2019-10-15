@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import app.com.youtubeapiv3.R;
@@ -57,6 +59,8 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
         TextView videodislikes = holder.videodislikes;
         TextView textViewDate = holder.textViewDate;
         ImageView ImageThumb = holder.ImageThumb;
+        ImageView imageView2 = holder.imageView2;
+        ImageView imageView3 = holder.imageView3;
 
         YoutubeDataModel object = dataSet.get(position);
 
@@ -72,11 +76,15 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
         if(mode == 1){
             LinearLayout youtube_post_layout = holder.youtube_post_layout;
             RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) youtube_post_layout.getLayoutParams();
-            lp.height = 500;
+            lp.height = 550;
             lp.width = 750;
             youtube_post_layout.setLayoutParams(lp);
 
             textViewTitle.setTextSize(20);
+            videolikes.setVisibility(View.GONE);
+            videodislikes.setVisibility(View.GONE);
+            imageView2.setVisibility(View.GONE);
+            imageView3.setVisibility(View.GONE);
         }
     }
 
@@ -91,6 +99,8 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
         TextView textViewDate;
         ImageView ImageThumb;
         LinearLayout youtube_post_layout;
+        ImageView imageView2;
+        ImageView imageView3;
 
         public YoutubePostHolder(View itemView) {
             super(itemView);
@@ -100,6 +110,8 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
             this.textViewDate = (TextView) itemView.findViewById(R.id.textViewDate);
             this.ImageThumb = (ImageView) itemView.findViewById(R.id.ImageThumb);
             this.youtube_post_layout = (LinearLayout) itemView.findViewById(R.id.youtube_post_layout);
+            this.imageView2 = (ImageView) itemView.findViewById(R.id.imageView2);
+            this.imageView3 = (ImageView) itemView.findViewById(R.id.imageView3);
         }
 
         public void bind(final YoutubeDataModel item, final OnItemClickListener listener) {
