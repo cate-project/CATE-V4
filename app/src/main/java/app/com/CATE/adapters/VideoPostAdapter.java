@@ -53,14 +53,16 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
 
         //set the views here
         TextView textViewTitle = holder.textViewTitle;
-        TextView textViewDes = holder.textViewDes;
+        TextView videolikes = holder.videolikes;
+        TextView videodislikes = holder.videodislikes;
         TextView textViewDate = holder.textViewDate;
         ImageView ImageThumb = holder.ImageThumb;
 
         YoutubeDataModel object = dataSet.get(position);
 
         textViewTitle.setText(object.getTitle());
-        textViewDes.setText(object.getDescription());
+        videolikes.setText(String.valueOf(object.getLikes()));
+        videodislikes.setText(String.valueOf(object.getDislikes()));
         textViewDate.setText(object.getPublishedAt());
         holder.bind(dataSet.get(position), listener);
 
@@ -85,7 +87,7 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
 
     public static class YoutubePostHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
-        TextView textViewDes;
+        TextView videolikes,videodislikes;
         TextView textViewDate;
         ImageView ImageThumb;
         LinearLayout youtube_post_layout;
@@ -93,7 +95,8 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
         public YoutubePostHolder(View itemView) {
             super(itemView);
             this.textViewTitle = (TextView) itemView.findViewById(R.id.textViewTitle);
-            this.textViewDes = (TextView) itemView.findViewById(R.id.textViewDes);
+            this.videolikes = (TextView) itemView.findViewById(R.id.videolikes);
+            this.videodislikes = (TextView) itemView.findViewById(R.id.videodislikes);
             this.textViewDate = (TextView) itemView.findViewById(R.id.textViewDate);
             this.ImageThumb = (ImageView) itemView.findViewById(R.id.ImageThumb);
             this.youtube_post_layout = (LinearLayout) itemView.findViewById(R.id.youtube_post_layout);

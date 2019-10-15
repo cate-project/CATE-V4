@@ -84,6 +84,7 @@ public class HomeFragment extends Fragment {
 
     public MainActivity mainActivity;
     private ProgressBar progressBar,progressBarstart;
+    ArrayList<String> arrayList = new ArrayList<>();
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -127,7 +128,9 @@ public class HomeFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
                 sortby = "인기순";
             }
+
         });
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(RetrofitService.URL)
@@ -141,7 +144,7 @@ public class HomeFragment extends Fragment {
 
                 try {
 
-                    ArrayList<String> arrayList = new ArrayList<>();
+
                     arrayList.add("전체");
                     for(int i =0; i < response.body().size(); i++) {
                         arrayList.add(response.body().get(i).getAsJsonObject().get("category_name").getAsString());
@@ -179,13 +182,11 @@ public class HomeFragment extends Fragment {
 
                 int lastVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
                 int itemTotalCount = recyclerView.getAdapter().getItemCount();
-                Log.e("몇번째","번호 : "+lastVisibleItemPosition);
 
                 if (lastVisibleItemPosition == itemTotalCount-1) {
                     do{
 //                        progressBar.setVisibility(View.VISIBLE);
                         collision=false;
-                        Log.e("실행 몇번","한번 ");
 
                         category_scroll_plus(lastVisibleItemPosition + 1);
                     }while(collision);
@@ -273,7 +274,6 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    //가로 카테고리
     private void init(ArrayList<String> arrayList,final int start) {
 
         adapter2 = new HorizontalCategoryAdapter(getContext(), arrayList, new OnArrayClickListner(){
