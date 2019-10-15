@@ -57,6 +57,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
+import static android.content.ContentValues.TAG;
+
 public class HomeFragment extends Fragment {
 
     public String GOOGLE_YOUTUBE_API_KEY = "AIzaSyDDNXQW5vUsBy91h_swoSAc_uFFAG14Clo";//here you should use your api key for testing purpose you can use this api also
@@ -162,6 +164,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
+                if (!mList_videos.canScrollVertically(-1)) {
+                    Log.i(TAG, "Top of list");
+                } else if (!mList_videos.canScrollVertically(1)) {
+                    Log.i(TAG, "End of list");
+                } else {
+                    Log.i(TAG, "idle");
+                }
             }
 
             @Override
@@ -170,11 +179,14 @@ public class HomeFragment extends Fragment {
 
                 int lastVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
                 int itemTotalCount = recyclerView.getAdapter().getItemCount();
-                Log.e("sdsd","ssss : "+lastVisibleItemPosition);
+                Log.e("몇번째","번호 : "+lastVisibleItemPosition);
+
                 if (lastVisibleItemPosition == itemTotalCount-1) {
                     do{
-                        progressBar.setVisibility(View.VISIBLE);
+//                        progressBar.setVisibility(View.VISIBLE);
                         collision=false;
+                        Log.e("실행 몇번","한번 ");
+
                         category_scroll_plus(lastVisibleItemPosition + 1);
                     }while(collision);
 

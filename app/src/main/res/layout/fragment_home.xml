@@ -42,7 +42,8 @@
             android:id="@+id/mList_videos"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"></android.support.v7.widget.RecyclerView>
+            android:layout_weight="1"
+            android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
         <ProgressBar
             android:id="@+id/progressbarhome"
             android:layout_width="match_parent"
