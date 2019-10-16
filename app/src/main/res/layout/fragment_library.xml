@@ -27,6 +27,7 @@
             android:id="@+id/list_horizontal_videoLike"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipToPadding="false"
             android:scrollbars="horizontal" />
 
         <TextView

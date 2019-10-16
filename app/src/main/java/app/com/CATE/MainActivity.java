@@ -36,12 +36,6 @@ public class MainActivity extends AppCompatActivity {
     public static Intent likeVideoIntent;
     public static Intent LibraryCommentIntent;
 
-    public String GOOGLE_YOUTUBE_API_KEY ="AIzaSyDDNXQW5vUsBy91h_swoSAc_uFFAG14Clo";  //here you should use your api key for testing purpose you can use this api also
-    public String CHANNEL_ID = "UCEgdi0XIXXZ-qJOFPf4JSKw";  //here you should use your channel id for testing purpose you can use this api also
-    public String CHANNLE_GET_URL = "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&channelId=" + CHANNEL_ID + "&eventType=live&maxResults=20&key=" + GOOGLE_YOUTUBE_API_KEY + "";
-    public String PLAYLIST_ID = "PLFgquLnL59al_vjBToIrYqC2l-CiO78U6";//here you should use your playlist id for testing purpose you can use this api also
-    public String PLAYLIST_GET_URL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + PLAYLIST_ID + "&maxResults=20&key=" + GOOGLE_YOUTUBE_API_KEY + "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);  // 왼쪽 버튼 사용 여부 true
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_search_24px); // 왼쪽 버튼 이미지 설정
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_play_arrow_24px); // 왼쪽 버튼 이미지 설정
         actionBar.setDisplayShowTitleEnabled(false);    // 타이틀 안보이게 하기
 
         likeVideoIntent = new Intent(MainActivity.this, LibraryLikeVideoActivity.class);

@@ -25,4 +25,10 @@
         <item>스포츠</item>
         <item>기타</item>
     </string-array>
+
+    <string name="login">LOGIN</string>
+    <string name="password">PASSWORD</string>
+    <string name="register">REGISTER</string>
+    <string name="id">ID</string>
+    <string name="test">TEST</string>
 </resources>

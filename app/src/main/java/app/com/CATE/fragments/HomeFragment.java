@@ -102,7 +102,6 @@ public class HomeFragment extends Fragment {
 // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         mainActivity = (MainActivity) getActivity();
-        PLAYLIST_GET_URL = mainActivity.PLAYLIST_GET_URL;
         mList_videos = (RecyclerView) view.findViewById(R.id.mList_videos);
         mListData = mainActivity.listData;
         listview2 = (RecyclerView) view.findViewById(R.id.mList_horizontal_category);

@@ -183,8 +183,6 @@ public class CategoryFragment extends ListFragment {
 
         }
 
-        mainActivity.PLAYLIST_ID = item.getKey();
-
         // TODO : use item data.
     }
 
