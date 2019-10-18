@@ -31,4 +31,5 @@
     <string name="register">REGISTER</string>
     <string name="id">ID</string>
     <string name="test">TEST</string>
+    <string name="thumbnail">thumbnail</string>
 </resources>

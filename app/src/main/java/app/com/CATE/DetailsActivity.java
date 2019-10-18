@@ -6,22 +6,18 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,13 +33,6 @@ import com.google.gson.JsonObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,8 +49,6 @@ import app.com.CATE.requests.BestCommentRequest;
 import app.com.CATE.requests.CommentInsertRequest;
 import app.com.CATE.requests.CommentRequest;
 import app.com.youtubeapiv3.R;
-import at.huber.youtubeExtractor.YouTubeUriExtractor;
-import at.huber.youtubeExtractor.YtFile;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -172,20 +159,20 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
 
         //좋아요 싫어요 상태
         if(u_v_status==1){
-            imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected);
-            imageButtonLike.setTag(R.drawable.ic_thumb_up_selected);
-            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down);
-            imageButtonDisLike.setTag(R.drawable.ic_thumb_down);
+            imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected_24px);
+            imageButtonLike.setTag(R.drawable.ic_thumb_up_selected_24px);
+            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_24px);
+            imageButtonDisLike.setTag(R.drawable.ic_thumb_down_24px);
         }else if(u_v_status==2){
-            imageButtonLike.setImageResource(R.drawable.ic_thumb_up);
-            imageButtonLike.setTag(R.drawable.ic_thumb_up);
-            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected);
-            imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected);
+            imageButtonLike.setImageResource(R.drawable.ic_thumb_up_24px);
+            imageButtonLike.setTag(R.drawable.ic_thumb_up_24px);
+            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected_24px);
+            imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected_24px);
         }else{
-            imageButtonLike.setImageResource(R.drawable.ic_thumb_up);
-            imageButtonLike.setTag(R.drawable.ic_thumb_up);
-            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down);
-            imageButtonDisLike.setTag(R.drawable.ic_thumb_down);
+            imageButtonLike.setImageResource(R.drawable.ic_thumb_up_24px);
+            imageButtonLike.setTag(R.drawable.ic_thumb_up_24px);
+            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_24px);
+            imageButtonDisLike.setTag(R.drawable.ic_thumb_down_24px);
         }
 
         countLike=findViewById(R.id.countLike);
@@ -197,25 +184,25 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
             @Override
             public void onClick(View view) {
 
-                if ( imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_selected)) {     //좋아요 취소
+                if ( imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_selected_24px)) {     //좋아요 취소
                     update_likes(5);
-                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up);
-                    imageButtonLike.setTag(R.drawable.ic_thumb_up);
+                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_24px);
+                    imageButtonLike.setTag(R.drawable.ic_thumb_up_24px);
                     countLike.setText(String.valueOf(Integer.parseInt(countLike.getText().toString()) - 1));
                 }
-                else if(imageButtonLike.getTag().equals(R.drawable.ic_thumb_up) &&imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_selected)){
+                else if(imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_24px) &&imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_selected_24px)){
                     update_likes(3);
-                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected);
+                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_24px);
                     countLike.setText(String.valueOf(Integer.parseInt(countLike.getText().toString())+1));
-                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down);
+                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_24px);
                     countDisLike.setText(String.valueOf(Integer.parseInt(countDisLike.getText().toString())-1));
-                    imageButtonLike.setTag(R.drawable.ic_thumb_up_selected);
-                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down);
+                    imageButtonLike.setTag(R.drawable.ic_thumb_up_selected_24px);
+                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_24px);
                 }
                 else{
                     update_likes(1);
-                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected);      //좋아요 누르기
-                    imageButtonLike.setTag(R.drawable.ic_thumb_up_selected);
+                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected_24px);      //좋아요 누르기
+                    imageButtonLike.setTag(R.drawable.ic_thumb_up_selected_24px);
                     countLike.setText(String.valueOf(Integer.parseInt(countLike.getText().toString())+1));
                 }
             }
@@ -224,25 +211,25 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
             @Override
             public void onClick(View view) {
 
-                if ( imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_selected) ){    //싫어요 취소
+                if ( imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_selected_24px) ){    //싫어요 취소
                     update_likes(6);
-                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down);
-                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down);
+                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_24px);
+                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_24px);
                     countDisLike.setText(String.valueOf(Integer.parseInt(countDisLike.getText().toString())-1));
                 }
-                else if(imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down) &&imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_selected)){
+                else if(imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_24px) &&imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_selected_24px)){
                     update_likes(4);
-                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up);
+                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_24px);
                     countLike.setText(String.valueOf(Integer.parseInt(countLike.getText().toString()) - 1));
-                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected);
+                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected_24px);
                     countDisLike.setText(String.valueOf(Integer.parseInt(countDisLike.getText().toString())+1));
-                    imageButtonLike.setTag(R.drawable.ic_thumb_up);
-                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected);
+                    imageButtonLike.setTag(R.drawable.ic_thumb_up_24px);
+                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected_24px);
                 }
                 else{             //i가 1일때 싫어요 클릭이 안된 상태
                     update_likes(2);
-                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected);      //싫어요 누르기
-                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected);
+                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected_24px);      //싫어요 누르기
+                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected_24px);
                     countDisLike.setText(String.valueOf(Integer.parseInt(countDisLike.getText().toString())+1));
                 }
             }

@@ -16,32 +16,34 @@
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youtube_player"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="wrap_content" />
 
 
     <LinearLayout
         android:id="@+id/title_layout"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="#e4e4e4"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_detail"
+        android:paddingBottom="10dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/textViewName"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:maxLines="2"
                 android:text="Android Name sjdnjas ajsk djak sjdka kaskdjaksdj kjskdjaksj"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/common_black_50"
-                android:textSize="20dp" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
             <Space
                 android:layout_width="0dp"
@@ -71,58 +73,60 @@
 
         <TextView
             android:id="@+id/textViewDate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:maxLines="1"
             android:text="description"
+            android:background="@drawable/border_detail"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/common_gray_txt"
-            android:textSize="16dp" />
+            android:textSize="16sp"
+            android:paddingBottom="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp">
 
             <ImageView
                 android:id="@+id/imageButtonLike"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_thumb_up" />
+                android:src="@drawable/ic_thumb_up_24px" />
 
             <TextView
                 android:id="@+id/countLike"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="1dp"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:onClick="downloadVideo"
                 android:text="0"
+                android:textSize="20sp"
                 android:layout_weight="1"
                 android:textColor="@color/common_ec_blue_txt" />
 
             <ImageView
                 android:id="@+id/imageButtonDisLike"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_thumb_down" />
+                android:src="@drawable/ic_thumb_down_24px"
+                android:background="@drawable/border_left_gray"/>
 
             <TextView
                 android:id="@+id/countDisLike"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="1dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:onClick="downloadVideo"
                 android:text="0"
+                android:textSize="20sp"
                 android:textColor="@color/common_red_txt" />
         </LinearLayout>
 
@@ -140,13 +144,16 @@
         android:layout_height="wrap_content"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/border">
 
         <EditText
             android:id="@+id/descText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:ems="10"
             android:hint="댓글을 입력하시오."
             android:inputType="textPersonName"

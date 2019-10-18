@@ -152,20 +152,20 @@ public class TwitchActivity extends AppCompatActivity {
             }
         });
         if (u_v_status == 1) {
-            imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected);
-            imageButtonLike.setTag(R.drawable.ic_thumb_up_selected);
-            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down);
-            imageButtonDisLike.setTag(R.drawable.ic_thumb_down);
+            imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected_24px);
+            imageButtonLike.setTag(R.drawable.ic_thumb_up_selected_24px);
+            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_24px);
+            imageButtonDisLike.setTag(R.drawable.ic_thumb_down_24px);
         } else if (u_v_status == 2) {
-            imageButtonLike.setImageResource(R.drawable.ic_thumb_up);
-            imageButtonLike.setTag(R.drawable.ic_thumb_up);
-            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected);
-            imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected);
+            imageButtonLike.setImageResource(R.drawable.ic_thumb_up_24px);
+            imageButtonLike.setTag(R.drawable.ic_thumb_up_24px);
+            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected_24px);
+            imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected_24px);
         } else {
-            imageButtonLike.setImageResource(R.drawable.ic_thumb_up);
-            imageButtonLike.setTag(R.drawable.ic_thumb_up);
-            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down);
-            imageButtonDisLike.setTag(R.drawable.ic_thumb_down);
+            imageButtonLike.setImageResource(R.drawable.ic_thumb_up_24px);
+            imageButtonLike.setTag(R.drawable.ic_thumb_up_24px);
+            imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_24px);
+            imageButtonDisLike.setTag(R.drawable.ic_thumb_down_24px);
         }
 
         countLike = findViewById(R.id.countLikeT);
@@ -177,23 +177,23 @@ public class TwitchActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_selected)) {     //좋아요 취소
+                if (imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_selected_24px)) {     //좋아요 취소
                     update_likes(5);
-                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up);
-                    imageButtonLike.setTag(R.drawable.ic_thumb_up);
+                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_24px);
+                    imageButtonLike.setTag(R.drawable.ic_thumb_up_24px);
                     countLike.setText(String.valueOf(Integer.parseInt(countLike.getText().toString()) - 1));
-                } else if (imageButtonLike.getTag().equals(R.drawable.ic_thumb_up) && imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_selected)) {
+                } else if (imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_24px) && imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_selected_24px)) {
                     update_likes(3);
-                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected);
+                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected_24px);
                     countLike.setText(String.valueOf(Integer.parseInt(countLike.getText().toString()) + 1));
-                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down);
+                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_24px);
                     countDisLike.setText(String.valueOf(Integer.parseInt(countDisLike.getText().toString()) - 1));
-                    imageButtonLike.setTag(R.drawable.ic_thumb_up_selected);
-                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down);
+                    imageButtonLike.setTag(R.drawable.ic_thumb_up_selected_24px);
+                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_24px);
                 } else {
                     update_likes(1);
-                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected);      //좋아요 누르기
-                    imageButtonLike.setTag(R.drawable.ic_thumb_up_selected);
+                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_selected_24px);      //좋아요 누르기
+                    imageButtonLike.setTag(R.drawable.ic_thumb_up_selected_24px);
                     countLike.setText(String.valueOf(Integer.parseInt(countLike.getText().toString()) + 1));
                 }
             }
@@ -202,23 +202,23 @@ public class TwitchActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_selected)) {    //싫어요 취소
+                if (imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_selected_24px)) {    //싫어요 취소
                     update_likes(6);
-                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down);
-                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down);
+                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_24px);
+                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_24px);
                     countDisLike.setText(String.valueOf(Integer.parseInt(countDisLike.getText().toString()) - 1));
-                } else if (imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down) && imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_selected)) {
+                } else if (imageButtonDisLike.getTag().equals(R.drawable.ic_thumb_down_24px) && imageButtonLike.getTag().equals(R.drawable.ic_thumb_up_selected_24px)) {
                     update_likes(4);
-                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up);
+                    imageButtonLike.setImageResource(R.drawable.ic_thumb_up_24px);
                     countLike.setText(String.valueOf(Integer.parseInt(countLike.getText().toString()) - 1));
-                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected);
+                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected_24px);
                     countDisLike.setText(String.valueOf(Integer.parseInt(countDisLike.getText().toString()) + 1));
-                    imageButtonLike.setTag(R.drawable.ic_thumb_up);
-                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected);
+                    imageButtonLike.setTag(R.drawable.ic_thumb_up_24px);
+                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected_24px);
                 } else {             //i가 1일때 싫어요 클릭이 안된 상태
                     update_likes(2);
-                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected);      //싫어요 누르기
-                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected);
+                    imageButtonDisLike.setImageResource(R.drawable.ic_thumb_down_selected_24px);      //싫어요 누르기
+                    imageButtonDisLike.setTag(R.drawable.ic_thumb_down_selected_24px);
                     countDisLike.setText(String.valueOf(Integer.parseInt(countDisLike.getText().toString()) + 1));
                 }
             }
