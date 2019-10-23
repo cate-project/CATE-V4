@@ -2,6 +2,7 @@ package app.com.CATE.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,9 @@ public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCa
     private ArrayList<String> itemList;
     private Context context;
     private OnArrayClickListner onArrayClickListner;
+    private View view;
+    private View tempView;
+    private int i = 0;
 
     public HorizontalCategoryAdapter(Context context, ArrayList<String> itemList, OnArrayClickListner onArrayClickListner) {
         this.context = context;
@@ -30,7 +34,7 @@ public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCa
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         // context 와 parent.getContext() 는 같다.
-        View view = LayoutInflater.from(context)
+        view = LayoutInflater.from(context)
                 .inflate(R.layout.horizontal_category_list_layout, parent, false);
 
         return new ViewHolder(view);
@@ -41,7 +45,11 @@ public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCa
         final String item = itemList.get(position);
 
         holder.textview.setText(item);
-//        holder.textview.setTag(item);
+
+        if (position == 0) {
+            view.setBackgroundColor(Color.LTGRAY);
+            tempView = view;
+        }
         holder.bind(itemList.get(position), onArrayClickListner);
     }
 
@@ -62,11 +70,16 @@ public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCa
             textview = (TextView) itemView.findViewById(R.id.category_textView);
         }
 
+        public void bind(final String string, final OnArrayClickListner onArrayClickListner) {
+            onArrayClickListner.onArrayClick("전체", null);
 
-        public void bind(final String string, final OnArrayClickListner onArrayClickListner){
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    while(i == 0) {
+                        tempView.setBackground(ContextCompat.getDrawable(context, R.drawable.border));
+                        i++;
+                    }
                     onArrayClickListner.onArrayClick(string, view);
                 }
             });

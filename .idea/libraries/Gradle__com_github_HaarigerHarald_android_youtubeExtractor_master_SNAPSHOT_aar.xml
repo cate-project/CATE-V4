@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7b30de03d7e2685ada173fb8efb5709e/android-youtubeExtractor-master-SNAPSHOT/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7b30de03d7e2685ada173fb8efb5709e/android-youtubeExtractor-master-SNAPSHOT/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3eec212f2846a42e159a634ad49d8a03/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3eec212f2846a42e159a634ad49d8a03/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

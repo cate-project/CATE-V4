@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import app.com.CATE.adapters.CommentAdapter;
 import app.com.CATE.models.CommentModel;
 import app.com.CATE.requests.CommentRequest;
+import app.com.CATE.requests.MyCommentRequest;
 import app.com.youtubeapiv3.R;
 
 public class LibraryCommentActivity extends AppCompatActivity {
@@ -40,6 +41,8 @@ public class LibraryCommentActivity extends AppCompatActivity {
                 Log.d("reuslt", response);
 
                 try {
+                    Log.d("테스트", response);
+
                     if (response.startsWith("ï»¿")) {
                         response = response.substring(3);
                     }
@@ -70,7 +73,7 @@ public class LibraryCommentActivity extends AppCompatActivity {
             }
         };
 
-        final CommentRequest commentRequest = new CommentRequest(0, MainActivity.strName,responseListener);
+        final MyCommentRequest commentRequest = new MyCommentRequest(MainActivity.strName,responseListener);
         RequestQueue queue = Volley.newRequestQueue(LibraryCommentActivity.this);
         queue.add(commentRequest);
 

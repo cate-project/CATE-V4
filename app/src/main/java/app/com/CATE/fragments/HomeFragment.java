@@ -279,9 +279,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onArrayClick(String category, View view) {
                 if(preView != null) preView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.border));
-                preView = view;
-                progressBarstart.setVisibility(view.VISIBLE);
-                view.setBackgroundColor(Color.LTGRAY);
+                if(view != null) {
+                    preView = view;
+                    view.setBackgroundColor(Color.LTGRAY);
+                    progressBarstart.setVisibility(view.VISIBLE);
+                }
 
                 category_selected=category;
                 mListData = new ArrayList<>();
