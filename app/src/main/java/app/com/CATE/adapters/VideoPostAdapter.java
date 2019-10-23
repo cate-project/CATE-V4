@@ -17,14 +17,11 @@ import app.com.youtubeapiv3.R;
 import app.com.CATE.interfaces.OnItemClickListener;
 import app.com.CATE.models.YoutubeDataModel;
 
-/**
- * Created by mdmunirhossain on 12/18/17.
- */
 
 public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.YoutubePostHolder> {
 
     private ArrayList<YoutubeDataModel> dataSet;
-    private Context mContext = null;
+    private Context mContext;
     private final OnItemClickListener listener;
     private int mode;
 
@@ -44,8 +41,7 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
     @Override
     public YoutubePostHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.youtube_post_layout,parent,false);
-        YoutubePostHolder postHolder = new YoutubePostHolder(view);
-        return postHolder;
+        return new YoutubePostHolder(view);
     }
 
     @Override
@@ -53,8 +49,8 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
 
         //set the views here
         TextView textViewTitle = holder.textViewTitle;
-        TextView videolikes = holder.videolikes;
-        TextView videodislikes = holder.videodislikes;
+        TextView videoLikes = holder.videoLikes;
+        TextView videoDislikes = holder.videoDislikes;
         ImageView ImageThumb = holder.ImageThumb;
         ImageView imageView2 = holder.imageView2;
         ImageView imageView3 = holder.imageView3;
@@ -62,11 +58,10 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
         YoutubeDataModel object = dataSet.get(position);
 
         textViewTitle.setText(object.getTitle());
-        videolikes.setText(String.valueOf(object.getLikes()));
-        videodislikes.setText(String.valueOf(object.getDislikes()));
+        videoLikes.setText(String.valueOf(object.getLikes()));
+        videoDislikes.setText(String.valueOf(object.getDislikes()));
         holder.bind(dataSet.get(position), listener);
 
-        //TODO: image will be downloaded from url
         Picasso.with(mContext).load(object.getThumbnail()).into(ImageThumb);
 
         if(mode == 1){
@@ -77,8 +72,8 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
             youtube_post_layout.setLayoutParams(lp);
 
             textViewTitle.setTextSize(20);
-            videolikes.setVisibility(View.GONE);
-            videodislikes.setVisibility(View.GONE);
+            videoLikes.setVisibility(View.GONE);
+            videoDislikes.setVisibility(View.GONE);
             imageView2.setVisibility(View.GONE);
             imageView3.setVisibility(View.GONE);
         }
@@ -89,20 +84,20 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
         return dataSet.size();
     }
 
-    public static class YoutubePostHolder extends RecyclerView.ViewHolder {
+     static class YoutubePostHolder extends RecyclerView.ViewHolder {
         TextView textViewTitle;
-        TextView videolikes,videodislikes;
+        TextView videoLikes, videoDislikes;
         TextView textViewDate;
         ImageView ImageThumb;
         LinearLayout youtube_post_layout;
         ImageView imageView2;
         ImageView imageView3;
 
-        public YoutubePostHolder(View itemView) {
+         YoutubePostHolder(View itemView) {
             super(itemView);
             this.textViewTitle = itemView.findViewById(R.id.textViewTitle);
-            this.videolikes = itemView.findViewById(R.id.textVideoLikes);
-            this.videodislikes = itemView.findViewById(R.id.textVideoDislikes);
+            this.videoLikes = itemView.findViewById(R.id.textVideoLikes);
+            this.videoDislikes = itemView.findViewById(R.id.textVideoDislikes);
             this.textViewDate = itemView.findViewById(R.id.textViewDate);
             this.ImageThumb = itemView.findViewById(R.id.ImageThumb);
             this.youtube_post_layout = itemView.findViewById(R.id.youtube_post_layout);
@@ -110,7 +105,7 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
             this.imageView3 = itemView.findViewById(R.id.imageView3);
         }
 
-        public void bind(final YoutubeDataModel item, final OnItemClickListener listener) {
+         void bind(final YoutubeDataModel item, final OnItemClickListener listener) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

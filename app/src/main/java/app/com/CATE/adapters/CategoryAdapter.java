@@ -12,62 +12,66 @@ import android.widget.TextView;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import app.com.CATE.models.CategoryModel;
 import app.com.youtubeapiv3.R;
 
-/**
- * Created by mdmunirhossain on 12/18/17.
- */
 
 public class CategoryAdapter extends BaseAdapter {
-    // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
-    private ArrayList<CategoryModel> listViewItemList = new ArrayList<CategoryModel>() ;
+    // Adapter 에 추가된 데이터를 저장하기 위한 ArrayList
+    private ArrayList<CategoryModel> listViewItemList = new ArrayList<>() ;
 
-    // ListViewAdapter의 생성자
+    // ListViewAdapter 의 생성자
     public CategoryAdapter() {
 
     }
 
-    // Adapter에 사용되는 데이터의 개수를 리턴. : 필수 구현
+    // Adapter 에 사용되는 데이터의 개수를 리턴. : 필수 구현
     @Override
     public int getCount() {
         return listViewItemList.size() ;
     }
 
-    // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴. : 필수 구현
+    // position 에 위치한 데이터를 화면에 출력하는데 사용될 View 를 리턴. : 필수 구현
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final int pos = position;
         final Context context = parent.getContext();
 
-        // "listview_item" Layout을 inflate하여 convertView 참조 획득.
+        // "listView_item" Layout 을 inflate 하여 convertView 참조 획득.
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.category_list_layout, parent, false);
+            convertView = Objects.requireNonNull(inflater).inflate(R.layout.category_list_layout, parent, false);
         }
 
-        // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
+        // 화면에 표시될 View(Layout 이 inflate 된)으로부터 위젯에 대한 참조 획득
         LinearLayout cate_list = convertView.findViewById(R.id.list_category);
         ImageView cate_id = convertView.findViewById(R.id.imageCategoryIcon);
         TextView cate_name = convertView.findViewById(R.id.text_name);
         TextView cate_detail = convertView.findViewById(R.id.text_detail);
 
-        // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
+        // Data Set(listViewItemList)에서 position 에 위치한 데이터 참조 획득
         CategoryModel listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
-        if(listViewItem.getName().equals("영화")) {
-            cate_id.setImageResource(R.drawable.icon_movie);
-        }else if(listViewItem.getName().equals("게임")) {
-            cate_id.setImageResource(R.drawable.ic_baseline_games_24px);
-        }else if(listViewItem.getName().equals("스포츠")) {
-            cate_id.setImageResource(R.drawable.icon_sport);
-        }else if(listViewItem.getName().equals("음악")) {
-            cate_id.setImageResource(R.drawable.icon_music);
-        }else{
-            cate_id.setImageResource(R.drawable.ic_baseline_clear_24px);
+        switch (listViewItem.getName()) {
+            case "영화":
+                cate_id.setImageResource(R.drawable.icon_movie);
+                break;
+            case "게임":
+                cate_id.setImageResource(R.drawable.ic_baseline_games_24px);
+                break;
+            case "스포츠":
+                cate_id.setImageResource(R.drawable.icon_sport);
+                break;
+            case "음악":
+                cate_id.setImageResource(R.drawable.icon_music);
+                break;
+            default:
+                cate_id.setImageResource(R.drawable.ic_baseline_clear_24px);
+                break;
         }
+
         cate_name.setText(listViewItem.getName());
         cate_detail.setText(listViewItem.getDetail());
 

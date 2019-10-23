@@ -181,8 +181,6 @@ public class CategoryFragment extends ListFragment {
             });
 
         }
-
-        // TODO : use item data.
     }
 
     public void addItem(String icon, String title, String desc, String channel, Boolean state) {

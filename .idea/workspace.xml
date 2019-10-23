@@ -10,56 +10,21 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9a00311-d34f-4639-801f-11f3c02edf64" name="Default Changelist" comment="CODE CLEAN UP AND WARNING CORRECTION">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/JO.xml" afterDir="false" />
+    <list default="true" id="d9a00311-d34f-4639-801f-11f3c02edf64" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/AddDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/AddDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/DetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/DetailsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/GMailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/GMailSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/LibraryCommentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/LibraryCommentActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/LibraryLikeVideoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/LibraryLikeVideoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/SignupPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/SignupPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/SignupPage_API.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/SignupPage_API.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/TwitchActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/TwitchActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CategoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CategoryAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CommentAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CommentAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/HorizontalCategoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/HorizontalCategoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/PagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/PagerAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/VideoPostAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/VideoPostAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/CategoryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/CategoryFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/HomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/LiveFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/SearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/SearchFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/interfaces/RetrofitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/app/com/CATE/interfaces/RetrofitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_comment_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_comment_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_library_comment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_library_comment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_library_video_like.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_library_video_like.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_signupapi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_signupapi.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_twitch.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_twitch.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/category_list_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/category_list_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_add.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_category.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_category.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_channel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_library.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_library.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_live.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_play_list.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/youtube_post_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/youtube_post_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -97,60 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="35" column="37" lean-forward="true" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_library.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-              <folding>
-                <element signature="e#801#826#0" expanded="true" />
-                <element signature="e#1419#1439#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/horizontal_category_list_layout.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="734">
-              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+            <state relative-caret-position="19">
+              <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -160,7 +73,7 @@
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1805">
-              <caret line="95" column="53" lean-forward="true" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
+              <caret line="95" column="53" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
               <folding>
                 <element signature="e#1395#1416#0" expanded="true" />
                 <element signature="e#2250#2265#0" expanded="true" />
@@ -175,8 +88,61 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/VideoPostAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-83">
-              <caret line="65" column="68" selection-start-line="65" selection-start-column="68" selection-end-line="65" selection-end-column="68" />
+            <state relative-caret-position="190">
+              <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/PagerAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/HorizontalCategoryAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="71" column="57" lean-forward="true" selection-start-line="71" selection-start-column="57" selection-end-line="71" selection-end-column="57" />
+              <folding>
+                <element signature="e#1763#1764#0" expanded="true" />
+                <element signature="e#1801#1802#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/CategoryFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="184" selection-start-line="184" selection-end-line="184" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CategoryAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="589">
+              <caret line="48" column="77" lean-forward="true" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+              <folding>
+                <element signature="e#2930#2931#0" expanded="true" />
+                <element signature="e#3084#3085#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CommentAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="222" column="57" selection-start-line="222" selection-start-column="57" selection-end-line="222" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -185,8 +151,8 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comment_layout.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="82" column="32" lean-forward="true" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
+            <state relative-caret-position="422">
+              <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -195,7 +161,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/AddDialog.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="401">
-              <caret line="234" column="9" lean-forward="true" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
+              <caret line="234" column="9" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -213,7 +179,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>retrofit</find>
       <find>Json</find>
       <find>Down</find>
       <find>Downl</find>
@@ -243,6 +208,7 @@
       <find>ic_thumb_down_selected</find>
       <find>ic_thumb_up_selected</find>
       <find>itemView</find>
+      <find>delete_comment</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -260,7 +226,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/interfaces/RetrofitService.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/requests/LoginRequest_KAKAO.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/SignupPage_API.java" />
@@ -268,7 +233,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/border.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/horizontal_category_list_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/spinner_background.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/CategoryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/list_line.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/bestcomment.xml" />
@@ -283,7 +247,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/DetailsActivity.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/HomeFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/HorizontalCategoryAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/requests/CommentRequest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/requests/MyCommentRequest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/LibraryCommentActivity.java" />
@@ -293,7 +256,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_library_video_like.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CommentAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_signupapi.xml" />
@@ -302,15 +264,19 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/category_list_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_add.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_channel.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CategoryAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_category.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_library.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/youtube_post_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/CategoryFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/VideoPostAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/PagerAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/HorizontalCategoryAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CategoryAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CommentAdapter.java" />
       </list>
     </option>
   </component>
@@ -373,18 +339,6 @@
               <item name="CATE-V4" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="CATE-V4" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="CATE-V4" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="CATE-V4" type="1abcf292:AndroidViewProjectNode" />
@@ -515,8 +469,24 @@
       <option name="project" value="LOCAL" />
       <updated>1571802287993</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="CODE CLEAN UP AND WARNING CORRECTION">
+      <created>1571806179299</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1571806179299</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -531,14 +501,14 @@
       <window_info id="Resources Explorer" order="6" weight="0.32995737" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.32962137" />
+      <window_info anchor="bottom" id="Messages" visible="true" weight="0.32962137" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.2962138" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.32516703" />
-      <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.32962137" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.32962137" />
       <window_info anchor="bottom" id="Debug" order="4" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.32962137" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50067115" side_tool="true" weight="0.32907802" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50067115" side_tool="true" weight="0.32850778" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32850778" />
       <window_info anchor="bottom" id="Build" order="8" sideWeight="0.49932885" weight="0.23385301" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32962137" />
@@ -584,13 +554,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="CODE CLEAN UP AND WARNING CORRECTION" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/requests/VideoChugaRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/border_bottom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -671,18 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/HorizontalCategoryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="72" column="56" lean-forward="true" selection-start-line="72" selection-start-column="56" selection-end-line="72" selection-end-column="56" />
-          <folding>
-            <element signature="e#1801#1802#0" expanded="true" />
-            <element signature="e#2268#2632#0" expanded="true" />
-            <element signature="e#2631#2632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/DetailsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -712,16 +663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CommentAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="114" column="78" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -778,9 +719,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/CategoryFragment.java">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/TwitchActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -854,13 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CategoryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="58" column="29" lean-forward="true" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_category.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
@@ -916,7 +847,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_library.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
-          <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
           <folding>
             <element signature="e#801#826#0" expanded="true" />
             <element signature="e#1419#1439#0" expanded="true" />
@@ -929,14 +860,14 @@
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/horizontal_category_list_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
-          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
@@ -944,43 +875,28 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="734">
-          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="35" column="37" lean-forward="true" selection-start-line="35" selection-start-column="37" selection-end-line="35" selection-end-column="37" />
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comment_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="82" column="32" lean-forward="true" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/AddDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
-          <caret line="234" column="9" lean-forward="true" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
+          <caret line="234" column="9" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/youtube_post_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1805">
-          <caret line="95" column="53" lean-forward="true" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
+          <caret line="95" column="53" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
           <folding>
             <element signature="e#1395#1416#0" expanded="true" />
             <element signature="e#2250#2265#0" expanded="true" />
@@ -992,10 +908,68 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_comment_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/fragments/CategoryFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="184" selection-start-line="184" selection-end-line="184" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CategoryAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="48" column="77" lean-forward="true" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+          <folding>
+            <element signature="e#2930#2931#0" expanded="true" />
+            <element signature="e#3084#3085#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/CommentAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="222" column="57" selection-start-line="222" selection-start-column="57" selection-end-line="222" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/HorizontalCategoryAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="71" column="57" lean-forward="true" selection-start-line="71" selection-start-column="57" selection-end-line="71" selection-end-column="57" />
+          <folding>
+            <element signature="e#1763#1764#0" expanded="true" />
+            <element signature="e#1801#1802#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/PagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/app/com/CATE/adapters/VideoPostAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-83">
-          <caret line="65" column="68" selection-start-line="65" selection-start-column="68" selection-end-line="65" selection-end-column="68" />
+        <state relative-caret-position="190">
+          <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
         </state>
       </provider>
     </entry>

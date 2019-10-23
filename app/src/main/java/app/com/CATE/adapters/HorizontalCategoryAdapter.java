@@ -4,12 +4,10 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -64,13 +62,13 @@ public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCa
 
         public TextView textview;
 
-        public ViewHolder(final View itemView) {
+        private ViewHolder(final View itemView) {
             super(itemView);
 
             textview = itemView.findViewById(R.id.category_textView);
         }
 
-        public void bind(final String string, final OnArrayClickListner onArrayClickListner) {
+        private void bind(final String string, final OnArrayClickListner onArrayClickListner) {
             onArrayClickListner.onArrayClick("전체", null);
 
             itemView.setOnClickListener(new View.OnClickListener() {

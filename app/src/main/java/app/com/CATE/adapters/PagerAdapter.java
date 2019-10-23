@@ -9,12 +9,9 @@ import app.com.CATE.fragments.LibraryFragment;
 import app.com.CATE.fragments.SearchFragment;
 import app.com.CATE.fragments.CategoryFragment;
 
-/**
- * Created by mdmunirhossain on 12/18/17.
- */
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
-    int mNumOfTabs;
+    private int mNumOfTabs;
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
@@ -26,17 +23,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                HomeFragment tab1 = new HomeFragment();
-                return tab1;
+                return new HomeFragment();
             case 1:
-                SearchFragment tab2 = new SearchFragment();
-                return tab2;
+                return new SearchFragment();
             case 2:
-                CategoryFragment tab3 = new CategoryFragment();
-                return tab3;
+                return new CategoryFragment();
             case 3:
-                LibraryFragment tab4 = new LibraryFragment();
-                return tab4;
+                return new LibraryFragment();
             default:
                 return null;
         }
