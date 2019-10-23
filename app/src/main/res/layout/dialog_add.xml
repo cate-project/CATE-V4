@@ -13,7 +13,7 @@
             android:id="@+id/title_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="제목" />
+            android:hint="@string/title" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -24,7 +24,7 @@
             android:id="@+id/url_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="URL" />
+            android:hint="@string/url" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -35,7 +35,7 @@
             android:id="@+id/category_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="카테고리" />
+            android:hint="@string/category" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -43,6 +43,6 @@
         android:id="@+id/button_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="확인" />
+        android:text="@string/confirm" />
 
 </LinearLayout>

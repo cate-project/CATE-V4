@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         category = intent.getStringExtra("Category");
         strName = intent.getStringExtra("userName");
         Api = intent.getStringExtra("Api");
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);  // 왼쪽 버튼 사용 여부 true
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         likeVideoIntent = new Intent(MainActivity.this, LibraryLikeVideoActivity.class);
         LibraryCommentIntent = new Intent(MainActivity.this, LibraryCommentActivity.class);
 
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.viewPager);
 
         //setting the tabs title
         tabLayout.addTab(tabLayout.newTab().setText("Home"));

@@ -61,8 +61,8 @@ public class SignupPage_API extends Activity {
         Toast.makeText(getApplicationContext(), userid, Toast.LENGTH_LONG).show();
 
 
-        editTextName = (EditText) findViewById(R.id.new_Name);
-        btn_submit=(Button)findViewById(R.id.btn_submit);
+        editTextName = findViewById(R.id.new_Name);
+        btn_submit= findViewById(R.id.btn_submit);
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,9 +102,9 @@ public class SignupPage_API extends Activity {
             protected String doInBackground(String... params) {
 
                 try {
-                    String Id = (String) params[0];
-                    String API = (String) params[1];
-                    String Name = (String) params[2];
+                    String Id = params[0];
+                    String API = params[1];
+                    String Name = params[2];
 
                     String link = "http://ghkdua1829.dothome.co.kr/fow/fow_post_Api.php";
                     String data = URLEncoder.encode("Id", "UTF-8") + "=" + URLEncoder.encode(Id, "UTF-8");
@@ -132,7 +132,7 @@ public class SignupPage_API extends Activity {
                     }
                     return sb.toString();
                 } catch (Exception e) {
-                    return new String("Exception: " + e.getMessage());
+                    return "Exception: " + e.getMessage();
                 }
             }
         }

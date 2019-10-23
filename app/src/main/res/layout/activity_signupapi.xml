@@ -9,9 +9,11 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/new_Name"
-        android:hint="이름을 입력하시오." />
+        android:hint="@string/input_name"
+        android:importantForAutofill="no"/>
+
     <Button
-        android:text="회원가입 요청"
+        android:text="@string/request_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_submit" />

@@ -84,11 +84,11 @@ public class AddDialog extends Dialog implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(LAYOUT);
 
-        titleEt = (TextInputEditText) findViewById(R.id.title_input);
-        urlEt = (TextInputEditText) findViewById(R.id.url_input);
-        tagEt = (TextInputEditText) findViewById(R.id.category_input);
+        titleEt = findViewById(R.id.title_input);
+        urlEt = findViewById(R.id.url_input);
+        tagEt = findViewById(R.id.category_input);
 
-        confirmBt = (Button) findViewById(R.id.button_confirm);
+        confirmBt = findViewById(R.id.button_confirm);
 
 //        youtubeRb.setOnClickListener(this);
 //        twitchRb.setOnClickListener(this);

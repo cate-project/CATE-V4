@@ -67,7 +67,7 @@ public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCa
         public ViewHolder(final View itemView) {
             super(itemView);
 
-            textview = (TextView) itemView.findViewById(R.id.category_textView);
+            textview = itemView.findViewById(R.id.category_textView);
         }
 
         public void bind(final String string, final OnArrayClickListner onArrayClickListner) {

@@ -33,7 +33,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,9 +57,9 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        searchview = (SearchView) view.findViewById(R.id.searching);
-        recyclerView = (RecyclerView) view.findViewById(R.id.searchlist);
-        progressBar = (ProgressBar) view.findViewById(R.id.progressbar);
+        searchview = view.findViewById(R.id.searching);
+        recyclerView = view.findViewById(R.id.searchList);
+        progressBar = view.findViewById(R.id.progressbar);
         progressBar.setVisibility(View.GONE);
 
         searchview.setSubmitButtonEnabled(true);

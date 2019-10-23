@@ -32,7 +32,7 @@ public class LibraryCommentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_library_comment);
 
         //if s equals 내가 쓴 댓글
-        listview = (ListView) findViewById(R.id.list_comment);
+        listview = findViewById(R.id.list_comment);
 
         final Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override

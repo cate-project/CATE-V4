@@ -3,7 +3,6 @@ package app.com.CATE.adapters;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Looper;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -13,17 +12,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
-import javax.crypto.Cipher;
 import javax.mail.MessagingException;
 import javax.mail.SendFailedException;
 
@@ -32,7 +27,6 @@ import app.com.CATE.GMailSender;
 import app.com.CATE.MainActivity;
 import app.com.CATE.interfaces.RetrofitService;
 import app.com.CATE.models.CommentModel;
-import app.com.CATE.models.YoutubeDataModel;
 import app.com.youtubeapiv3.R;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -101,15 +95,15 @@ public class CommentAdapter extends BaseAdapter {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.activity_comment_layout, parent, false);
-        final TextView textAuthor = (TextView) convertView.findViewById(R.id.textAuthor) ;
-        TextView textDesc = (TextView) convertView.findViewById(R.id.textDesc) ;
-        TextView textdate = (TextView) convertView.findViewById(R.id.textdate) ;
-        final ImageView commentLike=(ImageView) convertView.findViewById(R.id.commentLike);
-        final ImageView commentDisLike=(ImageView) convertView.findViewById(R.id.commentDisLike);
-        delete_comment=(ImageView) convertView.findViewById(R.id.delete_comment);
-        final TextView declaration=(TextView) convertView.findViewById(R.id.declaration);
-        final TextView  commentcountLike = (TextView) convertView.findViewById(R.id.commentcountLike) ;
-        final TextView commentcountDisLike = (TextView) convertView.findViewById(R.id.commentcountDisLike);
+        final TextView textAuthor = convertView.findViewById(R.id.textAuthor);
+        TextView textDesc = convertView.findViewById(R.id.textDesc);
+        TextView textdate = convertView.findViewById(R.id.textDate);
+        final ImageView commentLike= convertView.findViewById(R.id.imageCommentLike);
+        final ImageView commentDisLike= convertView.findViewById(R.id.commentDisLike);
+        delete_comment= convertView.findViewById(R.id.imageDeleteComment);
+        final TextView declaration= convertView.findViewById(R.id.declaration);
+        final TextView  commentcountLike = convertView.findViewById(R.id.textCommentCountLike);
+        final TextView commentcountDisLike = convertView.findViewById(R.id.textCommentCountDisLike);
 
         switch (commentModel.getType()){
             case 1:     // 베스트 댓글

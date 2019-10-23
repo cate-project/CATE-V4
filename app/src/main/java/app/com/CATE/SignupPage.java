@@ -63,10 +63,10 @@ public class SignupPage extends Activity {
         }
 
 
-        editTextId = (EditText) findViewById(R.id.new_id);
-        editTextPw1 = (EditText) findViewById(R.id.new_pw1);
-        editTextPw2 = (EditText) findViewById(R.id.new_pw2);
-        editTextName = (EditText) findViewById(R.id.new_Name);
+        editTextId = findViewById(R.id.new_id);
+        editTextPw1 = findViewById(R.id.new_pw1);
+        editTextPw2 = findViewById(R.id.new_pw2);
+        editTextName = findViewById(R.id.new_Name);
     }
     public void insert(View view) {
         String Id = editTextId.getText().toString();
@@ -141,9 +141,9 @@ public class SignupPage extends Activity {
             protected String doInBackground(String... params) {
 
                 try {
-                    String Id = (String) params[0];
-                    String Pw = (String) params[1];
-                    String Name = (String) params[2];
+                    String Id = params[0];
+                    String Pw = params[1];
+                    String Name = params[2];
 
                     String link = "http://ghkdua1829.dothome.co.kr/fow/fow_post.php";
                             String data = URLEncoder.encode("Id", "UTF-8") + "=" + URLEncoder.encode(Id, "UTF-8");
@@ -171,7 +171,7 @@ public class SignupPage extends Activity {
                     }
                     return sb.toString();
                 } catch (Exception e) {
-                    return new String("Exception: " + e.getMessage());
+                    return "Exception: " + e.getMessage();
                 }
             }
         }

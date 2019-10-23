@@ -77,7 +77,7 @@ public class TwitchActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twitch);
-        web = (WebView) findViewById(R.id.twitchPlayer);
+        web = findViewById(R.id.twitchPlayer);
 
         userName = MainActivity.strName;
 
@@ -89,9 +89,9 @@ public class TwitchActivity extends AppCompatActivity {
         dislikes = youtubeDataModel.getDislikes();
         u_v_status = intent.getIntExtra("u_v_status",0);
 
-        textViewName = (TextView) findViewById(R.id.textViewNameT);
+        textViewName = findViewById(R.id.textViewName);
 
-        TextView ss = findViewById(R.id.textViewDateT);
+        TextView ss = findViewById(R.id.textViewDate);
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date time = new Date();
 
@@ -99,10 +99,10 @@ public class TwitchActivity extends AppCompatActivity {
         ss.setText(time1);
         textViewName.setText(youtubeDataModel.getTitle());
 
-        listview = (ListView) findViewById(R.id.commentListT);
+        listview = findViewById(R.id.commentList);
 
-        imageButtonLike = findViewById(R.id.imageButtonLikeT);
-        imageButtonDisLike = findViewById(R.id.imageButtonDisLikeT);
+        imageButtonLike = findViewById(R.id.imageButtonLike);
+        imageButtonDisLike = findViewById(R.id.imageButtonDisLike);
         declaration_posting = findViewById(R.id.declaration_posting);
 
         declaration_posting.setOnClickListener(new View.OnClickListener() {
@@ -168,8 +168,8 @@ public class TwitchActivity extends AppCompatActivity {
             imageButtonDisLike.setTag(R.drawable.ic_thumb_down_24px);
         }
 
-        countLike = findViewById(R.id.countLikeT);
-        countDisLike = findViewById(R.id.countDisLikeT);
+        countLike = findViewById(R.id.countLike);
+        countDisLike = findViewById(R.id.countDisLike);
 
         countLike.setText(String.valueOf(likes));
         countDisLike.setText(String.valueOf(dislikes));
@@ -225,8 +225,8 @@ public class TwitchActivity extends AppCompatActivity {
         });
 
 
-        final EditText descText = (EditText) findViewById(R.id.descTextT);
-        Button insertButton = (Button) findViewById(R.id.insertButtonT);
+        final EditText descText = findViewById(R.id.descText);
+        Button insertButton = findViewById(R.id.insertButton);
 
 
         final Response.Listener<String> responseListenerBest = new Response.Listener<String>() {

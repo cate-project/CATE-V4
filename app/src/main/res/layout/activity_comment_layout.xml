@@ -22,19 +22,19 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="#0A0AFA"
-        android:text="author"
+        android:text="@string/author"
         android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
 
 
     <TextView
-        android:id="@+id/textdate"
+        android:id="@+id/textDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         android:textSize="14sp"
-        android:text="date" />
+        android:text="@string/date" />
 
     <View
         android:layout_width="0dp"
@@ -42,11 +42,12 @@
         android:layout_weight="1" />
 
     <ImageView
-        android:id="@+id/delete_comment"
+        android:id="@+id/imageDeleteComment"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_gravity="end"
-        android:src="@drawable/delete" />
+        android:src="@drawable/delete"
+        android:contentDescription="@string/image" />
 
 </LinearLayout>
 
@@ -59,7 +60,7 @@
         android:paddingBottom="5dp"
         android:textSize="24sp"
         android:textColor="#000000"
-        android:text="desc" />
+        android:text="@string/desc" />
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -67,18 +68,20 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/commentLike"
+        android:id="@+id/imageCommentLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:src="@drawable/ic_thumb_up_24px" />
+        android:src="@drawable/ic_thumb_up_24px"
+        android:contentDescription="@string/image"  />
+
     <TextView
-        android:id="@+id/commentcountLike"
+        android:id="@+id/textCommentCountLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:gravity="center"
-        android:text="0"
+        android:text="@string/_00"
         android:textSize="16sp"
         android:textColor="@color/common_ec_blue_txt" />
 
@@ -87,15 +90,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:src="@drawable/ic_thumb_down_24px" />
+        android:src="@drawable/ic_thumb_down_24px"
+        android:contentDescription="@string/image"  />
 
     <TextView
-        android:id="@+id/commentcountDisLike"
+        android:id="@+id/textCommentCountDisLike"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:gravity="center"
-        android:text="0"
+        android:text="@string/_00"
         android:textSize="16sp"
         android:textColor="@color/common_red_txt" />
 
@@ -109,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="end"
-        android:text="신고하기"
+        android:text="@string/report"
         android:textColor="@color/common_red_txt"
         android:textSize="16sp" />
 

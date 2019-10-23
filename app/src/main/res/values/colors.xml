@@ -17,10 +17,10 @@
 
     <color name="white">#ffffff</color>
 
-    <color name="cetagory_item_bg_01">#ffffff</color>
-    <color name="cetagory_item_bg_02">#d3dce5</color>
-    <color name="cetagory_item_bg_03">#aecce8</color>
-    <color name="cetagory_item_more_bg">#88add9</color>
+    <color name="category_item_bg_01">#ffffff</color>
+    <color name="category_item_bg_02">#d3dce5</color>
+    <color name="category_item_bg_03">#aecce8</color>
+    <color name="category_item_more_bg">#88add9</color>
 
     <color name="item_details_fragment_bg">#ededed</color>
     <!-- common -->
@@ -91,7 +91,7 @@
     <color name="ec_point_manager_text_chart">#0063dd</color>
     <color name="common_green">#45cc28</color>
     <color  name="green1">#139E91</color>
-    <color name="blacklight">#212121</color>
+    <color name="black_light">#212121</color>
     <color name="black_opacity_60">#99000000</color>
     <color name="white_50_percent_opacity">#7fffffff</color>
     <color name="line_config">#c9caca</color>

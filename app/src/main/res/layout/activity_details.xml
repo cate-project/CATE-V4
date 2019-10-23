@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<ImageView-->
-    <!--android:id="@+id/imageView"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="170dp"-->
-    <!--android:layout_weight="1"-->
-    <!--android:scaleType="centerCrop"-->
-    <!--android:tag="image_tag" />-->
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youtube_player"
         android:layout_width="match_parent"
@@ -20,7 +11,7 @@
 
 
     <LinearLayout
-        android:id="@+id/title_layout"
+        android:id="@+id/layoutTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border_detail"
@@ -36,11 +27,11 @@
                 android:id="@+id/textViewName"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:maxLines="2"
-                android:text="Android Name sjdnjas ajsk djak sjdka kaskdjaksdj kjskdjaksj"
+                android:text="@string/video_title"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
@@ -49,25 +40,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
+
             <ImageView
                 android:id="@+id/declaration_posting"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/declaration"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:contentDescription="@string/image" />
+
             <ImageView
                 android:id="@+id/img_left_header"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:onClick="share_btn_pressed"
                 android:scaleType="fitCenter"
                 android:src="@drawable/share"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:contentDescription="@string/image" />
 
         </LinearLayout>
 
@@ -79,7 +74,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:maxLines="1"
-            android:text="description"
+            android:text="@string/description"
             android:background="@drawable/border_detail"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/common_gray_txt"
@@ -97,7 +92,8 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_weight="1"
-                android:src="@drawable/ic_thumb_up_24px" />
+                android:src="@drawable/ic_thumb_up_24px"
+                android:contentDescription="@string/image" />
 
             <TextView
                 android:id="@+id/countLike"
@@ -105,7 +101,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="0"
+                android:text="@string/_00"
                 android:textSize="20sp"
                 android:layout_weight="1"
                 android:textColor="@color/common_ec_blue_txt" />
@@ -116,7 +112,8 @@
                 android:layout_height="36dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_thumb_down_24px"
-                android:background="@drawable/border_left_gray"/>
+                android:background="@drawable/border_left_gray"
+                android:contentDescription="@string/image"/>
 
             <TextView
                 android:id="@+id/countDisLike"
@@ -125,13 +122,12 @@
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="0"
+                android:text="@string/_00"
                 android:textSize="20sp"
                 android:textColor="@color/common_red_txt" />
         </LinearLayout>
 
     </LinearLayout>
-    <!--real image size is 40x50px-->
 
     <ListView
         android:id="@+id/commentList"
@@ -149,29 +145,21 @@
 
         <EditText
             android:id="@+id/descText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:ems="10"
-            android:hint="댓글을 입력하시오."
+            android:hint="@string/input_comment"
             android:inputType="textPersonName"
-            android:background="@null"/>
+            android:background="@null"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/insertButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="입력" />
+            android:text="@string/input" />
     </LinearLayout>
-
-    <!--<ImageView-->
-    <!--android:layout_width="40dp"-->
-    <!--android:layout_height="40dp"-->
-    <!--android:layout_alignParentRight="true"-->
-    <!--android:layout_marginTop="155dp"-->
-    <!--android:layout_marginRight="20dp"-->
-    <!--android:onClick="playVideo"-->
-    <!--android:src="@drawable/play"/>-->
 </LinearLayout>

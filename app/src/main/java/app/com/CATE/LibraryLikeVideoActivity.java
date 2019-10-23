@@ -35,7 +35,7 @@ public class LibraryLikeVideoActivity extends AppCompatActivity {
 
         userID = MainActivity.strName;
 
-        list_videoLike = (RecyclerView)findViewById(R.id.list_videoLike);
+        list_videoLike = findViewById(R.id.list_videoLike);
         list_videoLike.setAdapter(adapter);
 
         initList(LibraryFragment.listData);

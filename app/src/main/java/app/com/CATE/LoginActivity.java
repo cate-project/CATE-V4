@@ -60,11 +60,11 @@ public class LoginActivity extends AppCompatActivity {
         Session.getCurrentSession().addCallback(sessionCallback); //현재 세션에 콜백 붙임
 //        Session.getCurrentSession().checkAndImplicitOpen(); //자동 로그인
 
-        idText = (EditText) findViewById(R.id.idText);
-        passwordText = (EditText) findViewById(R.id.passwordText);
-        final Button loginbtn = (Button) findViewById(R.id.loginbtn);
-        BtnSignUp = (Button) findViewById(R.id.btn_signup);
-        AutoLogincheck=findViewById(R.id.AutoLogincheck);
+        idText = findViewById(R.id.idText);
+        passwordText = findViewById(R.id.passwordText);
+        final Button loginbtn = findViewById(R.id.buttonLogin);
+        BtnSignUp = findViewById(R.id.buttonSignUp);
+        AutoLogincheck=findViewById(R.id.AutoLogInCheck);
         if(!loginInformation.getString("id","").equalsIgnoreCase("")){
             LoginReq(loginInformation.getString("id",null),loginInformation.getString("password",null));
         }

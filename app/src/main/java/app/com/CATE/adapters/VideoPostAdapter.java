@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import app.com.youtubeapiv3.R;
@@ -57,7 +55,6 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
         TextView textViewTitle = holder.textViewTitle;
         TextView videolikes = holder.videolikes;
         TextView videodislikes = holder.videodislikes;
-        TextView textViewDate = holder.textViewDate;
         ImageView ImageThumb = holder.ImageThumb;
         ImageView imageView2 = holder.imageView2;
         ImageView imageView3 = holder.imageView3;
@@ -67,7 +64,6 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
         textViewTitle.setText(object.getTitle());
         videolikes.setText(String.valueOf(object.getLikes()));
         videodislikes.setText(String.valueOf(object.getDislikes()));
-        textViewDate.setText(object.getPublishedAt());
         holder.bind(dataSet.get(position), listener);
 
         //TODO: image will be downloaded from url
@@ -104,14 +100,14 @@ public class VideoPostAdapter extends RecyclerView.Adapter<VideoPostAdapter.Yout
 
         public YoutubePostHolder(View itemView) {
             super(itemView);
-            this.textViewTitle = (TextView) itemView.findViewById(R.id.textViewTitle);
-            this.videolikes = (TextView) itemView.findViewById(R.id.videolikes);
-            this.videodislikes = (TextView) itemView.findViewById(R.id.videodislikes);
-            this.textViewDate = (TextView) itemView.findViewById(R.id.textViewDate);
-            this.ImageThumb = (ImageView) itemView.findViewById(R.id.ImageThumb);
-            this.youtube_post_layout = (LinearLayout) itemView.findViewById(R.id.youtube_post_layout);
-            this.imageView2 = (ImageView) itemView.findViewById(R.id.imageView2);
-            this.imageView3 = (ImageView) itemView.findViewById(R.id.imageView3);
+            this.textViewTitle = itemView.findViewById(R.id.textViewTitle);
+            this.videolikes = itemView.findViewById(R.id.textVideoLikes);
+            this.videodislikes = itemView.findViewById(R.id.textVideoDislikes);
+            this.textViewDate = itemView.findViewById(R.id.textViewDate);
+            this.ImageThumb = itemView.findViewById(R.id.ImageThumb);
+            this.youtube_post_layout = itemView.findViewById(R.id.youtube_post_layout);
+            this.imageView2 = itemView.findViewById(R.id.imageView2);
+            this.imageView3 = itemView.findViewById(R.id.imageView3);
         }
 
         public void bind(final YoutubeDataModel item, final OnItemClickListener listener) {

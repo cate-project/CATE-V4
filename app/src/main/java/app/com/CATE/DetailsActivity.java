@@ -88,10 +88,10 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
         dislikes = youtubeDataModel.getDislikes();
         u_v_status = intent.getIntExtra("u_v_status",0);
 
-        mYoutubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_player);
+        mYoutubePlayerView = findViewById(R.id.youtube_player);
         mYoutubePlayerView.initialize(GOOGLE_YOUTUBE_API, this);
 
-        textViewName = (TextView) findViewById(R.id.textViewName);
+        textViewName = findViewById(R.id.textViewName);
 
         TextView ss=findViewById(R.id.textViewDate);
         SimpleDateFormat format1 = new SimpleDateFormat( "yyyy-MM-dd HH:mm");
@@ -101,8 +101,8 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
         ss.setText(time1);
         textViewName.setText(youtubeDataModel.getTitle());
 
-        mList_videos = (RecyclerView) findViewById(R.id.mList_videos);
-        listview = (ListView) findViewById(R.id.commentList);
+        mList_videos = findViewById(R.id.mList_videos);
+        listview = findViewById(R.id.commentList);
 
         imageButtonLike=findViewById(R.id.imageButtonLike);
         imageButtonDisLike=findViewById(R.id.imageButtonDisLike);
@@ -246,8 +246,8 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
 
 
 
-        final EditText descText = (EditText) findViewById(R.id.descText);
-        Button insertButton = (Button) findViewById(R.id.insertButton);
+        final EditText descText = findViewById(R.id.descText);
+        Button insertButton = findViewById(R.id.insertButton);
 
 
         final Response.Listener<String> responseListenerBest = new Response.Listener<String>() {
@@ -646,7 +646,7 @@ public class DetailsActivity extends YouTubeBaseActivity implements YouTubePlaye
 
     public void requestPermissionForReadExtertalStorage() throws Exception {
         try {
-            ActivityCompat.requestPermissions((Activity) this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     READ_STORAGE_PERMISSION_REQUEST_CODE);
         } catch (Exception e) {
             e.printStackTrace();

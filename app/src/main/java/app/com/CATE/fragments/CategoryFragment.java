@@ -75,7 +75,7 @@ public class CategoryFragment extends ListFragment {
                 .build();
 
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        retrofitService.all_category(mainActivity.strName).enqueue(new Callback<JsonObject>() {
+        retrofitService.all_category(MainActivity.strName).enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 JsonObject jsonObject = response.body();
@@ -90,8 +90,7 @@ public class CategoryFragment extends ListFragment {
                     while (count < jsonArray.size()) {
                         JsonObject object = jsonArray.get(count).getAsJsonObject();
 
-                        if (numberArray.get(count).getAsJsonObject().get("category_number").getAsString().equals("1")) cateState = true;
-                        else cateState = false;
+                        cateState = numberArray.get(count).getAsJsonObject().get("category_number").getAsString().equals("1");
 
                         cateId = object.get("id").getAsString();
                         cateName = object.get("name").getAsString();
@@ -134,7 +133,7 @@ public class CategoryFragment extends ListFragment {
             Map map = new HashMap();
             map.put("index", position + "");
             map.put("value", 0 + "");
-            map.put("user_name", mainActivity.strName);
+            map.put("user_name", MainActivity.strName);
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(RetrofitService.URL)
@@ -161,7 +160,7 @@ public class CategoryFragment extends ListFragment {
             Map map = new HashMap();
             map.put("index", position + "");
             map.put("value", 1 + "");
-            map.put("user_name", mainActivity.strName);
+            map.put("user_name", MainActivity.strName);
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(RetrofitService.URL)
@@ -204,7 +203,7 @@ public class CategoryFragment extends ListFragment {
         protected String doInBackground(String... params) {
 
             try {
-                String tag = (String) params[0];
+                String tag = params[0];
 
                 URL url = new URL(target);//URL 객체 생성
 

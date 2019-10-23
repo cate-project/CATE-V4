@@ -3,7 +3,6 @@ package app.com.CATE.fragments;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -12,31 +11,16 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 import app.com.CATE.interfaces.RetrofitService;
@@ -46,7 +30,6 @@ import app.com.CATE.adapters.VideoPostAdapter;
 import app.com.CATE.DetailsActivity;
 import app.com.CATE.MainActivity;
 import app.com.CATE.interfaces.OnArrayClickListner;
-import app.com.CATE.models.CategoryModel;
 import app.com.youtubeapiv3.R;
 import app.com.CATE.interfaces.OnItemClickListener;
 import app.com.CATE.models.YoutubeDataModel;
@@ -55,7 +38,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import static android.content.ContentValues.TAG;
 
@@ -102,21 +84,21 @@ public class HomeFragment extends Fragment {
 // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         mainActivity = (MainActivity) getActivity();
-        mList_videos = (RecyclerView) view.findViewById(R.id.mList_videos);
+        mList_videos = view.findViewById(R.id.mList_videos);
         mListData = mainActivity.listData;
-        listview2 = (RecyclerView) view.findViewById(R.id.mList_horizontal_category);
-        progressBar = (ProgressBar) view.findViewById(R.id.progressbarhome);
-        progressBarstart = (ProgressBar) view.findViewById(R.id.progressbarfirst);
+        listview2 = view.findViewById(R.id.mList_horizontal_category);
+        progressBar = view.findViewById(R.id.progressBarHome);
+        progressBarstart = view.findViewById(R.id.progressBarFirst);
         progressBar.setVisibility(View.GONE);
         progressBarstart.setVisibility(View.GONE);
 
         initList(nListData);
 
 
-        userID = mainActivity.strName;
+        userID = MainActivity.strName;
 
         //스피너 생성 및 클릭시 동작 지정
-        Spinner spinner = (Spinner)view.findViewById(R.id.spinnerSort);
+        Spinner spinner = view.findViewById(R.id.spinnerSort);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -137,7 +119,7 @@ public class HomeFragment extends Fragment {
                 .build();
 
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        retrofitService.getCategory(mainActivity.strName).enqueue(new Callback<JsonArray>() {
+        retrofitService.getCategory(MainActivity.strName).enqueue(new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
 
@@ -282,7 +264,7 @@ public class HomeFragment extends Fragment {
                 if(view != null) {
                     preView = view;
                     view.setBackgroundColor(Color.LTGRAY);
-                    progressBarstart.setVisibility(view.VISIBLE);
+                    progressBarstart.setVisibility(View.VISIBLE);
                 }
 
                 category_selected=category;

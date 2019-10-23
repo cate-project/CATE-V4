@@ -14,7 +14,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface RetrofitService {
-    static final String URL = "http://ghkdua1829.dothome.co.kr/fow/";
+    String URL = "http://ghkdua1829.dothome.co.kr/fow/";
 
     @FormUrlEncoded
     @POST("fow_loginReq.php")

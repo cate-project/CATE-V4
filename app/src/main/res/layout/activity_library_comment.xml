@@ -10,7 +10,7 @@
         android:layout_margin="10dp"
         android:drawableStart="@drawable/ic_baseline_view_headline_24px"
         android:drawablePadding="10dp"
-        android:text="내가 쓴 댓글"
+        android:text="@string/my_comment"
         android:textSize="30sp" />
 
     <ListView
