@@ -1,12 +1,5 @@
 package app.com.CATE.models;
 
-import android.graphics.drawable.Drawable;
-import android.os.Parcel;
-import android.os.Parcelable;
-
-/**
- * Created by mdmunirhossain on 12/18/17.
- */
 public class CategoryModel{
     private String id ;
     private String name ;
@@ -15,19 +8,17 @@ public class CategoryModel{
     private Boolean state;
 
     public void setId(String id) {
-        id = id ;
+        this.id = id ;
     }
     public void setName(String name) {
-        name = name ;
+        this.name = name ;
     }
     public void setDetail(String detail) {
-        detail = detail ;
+        this.detail = detail ;
     }
-    public void setKey(String key){
-        key = key;
-    }
+    public void setKey(String key){ this.key = key; }
     public void setState(Boolean state){
-        state = state;
+        this.state = state;
     }
 
     public String getId() {

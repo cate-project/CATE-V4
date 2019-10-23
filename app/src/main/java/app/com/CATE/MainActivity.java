@@ -18,17 +18,16 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import app.com.CATE.models.YoutubeDataModel;
 import app.com.youtubeapiv3.R;
 
 public class MainActivity extends AppCompatActivity {
     public static String strName,Api;
-    private TabLayout tabLayout = null;
-    public static ViewPager viewPager = null;
+    public ViewPager viewPager = null;
     private Toolbar toolbar = null;
-    public String category, channel;
-    public static int video_index;
+    public String category;
 
     TextView txtResult;
     public ArrayList<YoutubeDataModel> listData = new ArrayList<>();
@@ -47,14 +46,14 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);  // 왼쪽 버튼 사용 여부 true
+        Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);  // 왼쪽 버튼 사용 여부 true
         actionBar.setHomeAsUpIndicator(R.drawable.ic_play_arrow_24px); // 왼쪽 버튼 이미지 설정
         actionBar.setDisplayShowTitleEnabled(false);    // 타이틀 안보이게 하기
 
         likeVideoIntent = new Intent(MainActivity.this, LibraryLikeVideoActivity.class);
         LibraryCommentIntent = new Intent(MainActivity.this, LibraryCommentActivity.class);
 
-        tabLayout = findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.viewPager);
 
         //setting the tabs title
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
@@ -113,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(toolbar, "Logout menu pressed", Snackbar.LENGTH_SHORT).show();
                 SharedPreferences.Editor editor=LoginActivity.loginInformation.edit();
                 editor.clear();
-                editor.commit();
+                editor.apply();
                     UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
                         @Override
                         public void onCompleteLogout() {

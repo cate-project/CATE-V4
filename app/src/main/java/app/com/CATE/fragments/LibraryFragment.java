@@ -2,11 +2,11 @@ package app.com.CATE.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +15,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import app.com.CATE.DetailsActivity;
-import app.com.CATE.LibraryLikeVideoActivity;
 import app.com.CATE.MainActivity;
 import app.com.CATE.TwitchActivity;
 import app.com.CATE.adapters.VideoPostAdapter;
@@ -39,7 +39,6 @@ public class LibraryFragment extends Fragment {
 
     public LibraryFragment(){}
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_library, container, false);
@@ -84,16 +83,16 @@ public class LibraryFragment extends Fragment {
                     Call<JsonObject> call=retrofitService.MakeLikeTable(MainActivity.strName,youtubeDataModel.getVideo_index());
                     call.enqueue(new Callback<JsonObject>() {
                         @Override
-                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                             JsonObject jsonObject = response.body();
                             Intent intent = new Intent(getActivity(), DetailsActivity.class);
                             intent.putExtra(YoutubeDataModel.class.toString(), youtubeDataModel);
-                            intent.putExtra("u_v_status", jsonObject.get("status").getAsInt());
+                            intent.putExtra("u_v_status", Objects.requireNonNull(jsonObject).get("status").getAsInt());
                             startActivity(intent);
                         }
 
                         @Override
-                        public void onFailure(Call<JsonObject> call, Throwable t) {
+                        public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
                         }
                     });
@@ -107,16 +106,16 @@ public class LibraryFragment extends Fragment {
                     Call<JsonObject> call=retrofitService.MakeLikeTable(MainActivity.strName,youtubeDataModel.getVideo_index());
                     call.enqueue(new Callback<JsonObject>() {
                         @Override
-                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                             JsonObject jsonObject=response.body();
                             Intent intent = new Intent(getActivity(), TwitchActivity.class);
                             intent.putExtra(YoutubeDataModel.class.toString(), youtubeDataModel);
-                            intent.putExtra("u_v_status", jsonObject.get("status").getAsInt());
+                            intent.putExtra("u_v_status", Objects.requireNonNull(jsonObject).get("status").getAsInt());
                             startActivity(intent);
                         }
 
                         @Override
-                        public void onFailure(Call<JsonObject> call, Throwable t) {
+                        public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
                         }
                     });
@@ -135,14 +134,14 @@ public class LibraryFragment extends Fragment {
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
         retrofitService.getLikeVideo(userID).enqueue(new Callback<JsonArray>() {
             @Override
-            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+            public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
                 listData = new ArrayList<>();
 
-                for(int i=0; i < response.body().size(); i++) {
+                for(int i = 0; i < Objects.requireNonNull(response.body()).size(); i++) {
                     JsonObject object = response.body().get(i).getAsJsonObject();
 
                     YoutubeDataModel youtubeObject = new YoutubeDataModel();
-                    String thumbnail = "";
+                    String thumbnail;
                     String video_id = "";
                     String cateName, video_kind, cateDetail;
                     int video_index, likes, dislikes;
@@ -177,7 +176,7 @@ public class LibraryFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<JsonArray> call, Throwable t) {
+            public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
 
             }
         });

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -17,11 +18,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import app.com.CATE.interfaces.RetrofitService;
 import app.com.CATE.TwitchActivity;
@@ -29,7 +32,7 @@ import app.com.CATE.adapters.HorizontalCategoryAdapter;
 import app.com.CATE.adapters.VideoPostAdapter;
 import app.com.CATE.DetailsActivity;
 import app.com.CATE.MainActivity;
-import app.com.CATE.interfaces.OnArrayClickListner;
+import app.com.CATE.interfaces.OnArrayClickListener;
 import app.com.youtubeapiv3.R;
 import app.com.CATE.interfaces.OnItemClickListener;
 import app.com.CATE.models.YoutubeDataModel;
@@ -43,35 +46,30 @@ import static android.content.ContentValues.TAG;
 
 public class HomeFragment extends Fragment {
 
-    public String GOOGLE_YOUTUBE_API_KEY = "AIzaSyDDNXQW5vUsBy91h_swoSAc_uFFAG14Clo";//here you should use your api key for testing purpose you can use this api also
-    public String PLAYLIST_ID = "PLHRoF1XPhCHXQhWkViQveuVa-k6P8_aD2";//here you should use your playlist id for testing purpose you can use this api also
-    public String PLAYLIST_GET_URL = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=" + PLAYLIST_ID + "&maxResults=20&key=" + GOOGLE_YOUTUBE_API_KEY + "";
-
     private RecyclerView mList_videos = null;
     private VideoPostAdapter adapter = null;
     private ArrayList<YoutubeDataModel> mListData = new ArrayList<>();
     private ArrayList<YoutubeDataModel> nListData = new ArrayList<>();
-    int requestNum = 0;
+
     String userID;
     String category_selected;
     boolean collision=true;
-    //가로 카테고리
-    private RecyclerView listview2;
-    private HorizontalCategoryAdapter adapter2;
 
+    //가로 카테고리
+    private RecyclerView horizontalListView;
     private View preView;
 
     //정렬 기준
-    String sortby;
+    String sortBy;
 
     public MainActivity mainActivity;
-    private ProgressBar progressBar,progressBarstart;
+    private ProgressBar progressBar, progressBarStart;
     ArrayList<String> arrayList = new ArrayList<>();
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-        listview2.setLayoutManager(layoutManager);
+        horizontalListView.setLayoutManager(layoutManager);
     }
 
     public HomeFragment() {
@@ -86,11 +84,11 @@ public class HomeFragment extends Fragment {
         mainActivity = (MainActivity) getActivity();
         mList_videos = view.findViewById(R.id.mList_videos);
         mListData = mainActivity.listData;
-        listview2 = view.findViewById(R.id.mList_horizontal_category);
+        horizontalListView = view.findViewById(R.id.mList_horizontal_category);
         progressBar = view.findViewById(R.id.progressBarHome);
-        progressBarstart = view.findViewById(R.id.progressBarFirst);
+        progressBarStart = view.findViewById(R.id.progressBarFirst);
         progressBar.setVisibility(View.GONE);
-        progressBarstart.setVisibility(View.GONE);
+        progressBarStart.setVisibility(View.GONE);
 
         initList(nListData);
 
@@ -102,12 +100,12 @@ public class HomeFragment extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                sortby = ""+parent.getItemAtPosition(position);
+                sortBy = ""+parent.getItemAtPosition(position);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                sortby = "인기순";
+                sortBy = "인기순";
             }
 
         });
@@ -121,24 +119,25 @@ public class HomeFragment extends Fragment {
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
         retrofitService.getCategory(MainActivity.strName).enqueue(new Callback<JsonArray>() {
             @Override
-            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+            public void onResponse(@NonNull Call<JsonArray> call,@NonNull Response<JsonArray> response) {
 
                 try {
 
 
                     arrayList.add("전체");
-                    for(int i =0; i < response.body().size(); i++) {
+                    for(int i = 0; i < Objects.requireNonNull(response.body()).size(); i++) {
                         arrayList.add(response.body().get(i).getAsJsonObject().get("category_name").getAsString());
                     }
 
-                    init(arrayList,0);
+                    init(arrayList);
 
                 } catch (Exception e) {
+                    Toast.makeText(getActivity(), "정렬 기준 초기화 실패", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<JsonArray> call, Throwable t) {
+            public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
 
             }
         });
@@ -189,15 +188,15 @@ public class HomeFragment extends Fragment {
                 .build();
 
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-        retrofitService.getCategoryVideo(category_selected, sortby).enqueue(new Callback<JsonArray>() {
+        retrofitService.getCategoryVideo(category_selected, sortBy).enqueue(new Callback<JsonArray>() {
             @Override
-            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+            public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
                 try {
                     for(int i=start; i < start+3; i++) {
-                        JsonObject object = response.body().get(i).getAsJsonObject();
+                        JsonObject object = Objects.requireNonNull(response.body()).get(i).getAsJsonObject();
 
                         YoutubeDataModel youtubeObject = new YoutubeDataModel();
-                        String thumbnail = "";
+                        String thumbnail;
                         String video_id = "";
                         String cateName, video_kind, cateDetail;
                         int video_index, likes, dislikes;
@@ -249,22 +248,22 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<JsonArray> call, Throwable t) {
+            public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
 
             }
         });
     }
 
-    private void init(ArrayList<String> arrayList,final int start) {
+    private void init(ArrayList<String> arrayList) {
 
-        adapter2 = new HorizontalCategoryAdapter(getContext(), arrayList, new OnArrayClickListner(){
+        HorizontalCategoryAdapter adapter2 = new HorizontalCategoryAdapter(getContext(), arrayList, new OnArrayClickListener(){
             @Override
             public void onArrayClick(String category, View view) {
-                if(preView != null) preView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.border));
+                if(preView != null) preView.setBackground(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border));
                 if(view != null) {
                     preView = view;
                     view.setBackgroundColor(Color.LTGRAY);
-                    progressBarstart.setVisibility(View.VISIBLE);
+                    progressBarStart.setVisibility(View.VISIBLE);
                 }
 
                 category_selected=category;
@@ -276,15 +275,15 @@ public class HomeFragment extends Fragment {
                         .build();
 
                 RetrofitService retrofitService = retrofit.create(RetrofitService.class);
-                retrofitService.getCategoryVideo(category, sortby).enqueue(new Callback<JsonArray>() {
+                retrofitService.getCategoryVideo(category, sortBy).enqueue(new Callback<JsonArray>() {
                     @Override
-                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                    public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
                         try {
-                            for (int i = start; i < start + 3; i++) {
-                                JsonObject object = response.body().get(i).getAsJsonObject();
+                            for (int i = 0; i < 3; i++) {
+                                JsonObject object = Objects.requireNonNull(response.body()).get(i).getAsJsonObject();
 
                                 YoutubeDataModel youtubeObject = new YoutubeDataModel();
-                                String thumbnail = "";
+                                String thumbnail;
                                 String video_id = "";
                                 String cateName, video_kind, cateDetail;
                                 int video_index, likes, dislikes;
@@ -318,40 +317,30 @@ public class HomeFragment extends Fragment {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if (start == 0) {
-                                        initList(mListData);
-                                    } else {
-                                        adapter.notifyDataSetChanged();
-                                    }
+                                    initList(mListData);
                                     progressBar.setVisibility(View.GONE);
-                                    progressBarstart.setVisibility(View.GONE);
+                                    progressBarStart.setVisibility(View.GONE);
                                 }
                             }, 1000);
                         } catch (IndexOutOfBoundsException ea) {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if (start == 0) {
-                                        initList(mListData);
-                                    } else {
-                                        adapter.notifyDataSetChanged();
-//                                        Toast.makeText(getContext(), "더이상 동영상이 없습니다.", Toast.LENGTH_SHORT).show();
-                                    }
-
+                                    initList(mListData);
                                     progressBar.setVisibility(View.GONE);
-                                    progressBarstart.setVisibility(View.GONE);
+                                    progressBarStart.setVisibility(View.GONE);
                                 }
                             }, 1000);
                         }
                     }
                     @Override
-                    public void onFailure(Call<JsonArray> call, Throwable t) {
+                    public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
 
                     }
                 });
             }
         });
-        listview2.setAdapter(adapter2);
+        horizontalListView.setAdapter(adapter2);
     }
 
     private void initList(ArrayList<YoutubeDataModel> mListData) {
@@ -370,16 +359,16 @@ public class HomeFragment extends Fragment {
                     Call<JsonObject> call=retrofitService.MakeLikeTable(MainActivity.strName,youtubeDataModel.getVideo_index());
                     call.enqueue(new Callback<JsonObject>() {
                         @Override
-                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                             JsonObject jsonObject = response.body();
                             Intent intent = new Intent(getActivity(), DetailsActivity.class);
                             intent.putExtra(YoutubeDataModel.class.toString(), youtubeDataModel);
-                            intent.putExtra("u_v_status", jsonObject.get("status").getAsInt());
+                            intent.putExtra("u_v_status", Objects.requireNonNull(jsonObject).get("status").getAsInt());
                             startActivity(intent);
                         }
 
                         @Override
-                        public void onFailure(Call<JsonObject> call, Throwable t) {
+                        public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
                         }
                     });
@@ -393,16 +382,16 @@ public class HomeFragment extends Fragment {
                     Call<JsonObject> call=retrofitService.MakeLikeTable(MainActivity.strName,youtubeDataModel.getVideo_index());
                     call.enqueue(new Callback<JsonObject>() {
                         @Override
-                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                             JsonObject jsonObject=response.body();
                             Intent intent = new Intent(getActivity(), TwitchActivity.class);
                             intent.putExtra(YoutubeDataModel.class.toString(), youtubeDataModel);
-                            intent.putExtra("u_v_status", jsonObject.get("status").getAsInt());
+                            intent.putExtra("u_v_status", Objects.requireNonNull(jsonObject).get("status").getAsInt());
                             startActivity(intent);
                         }
 
                         @Override
-                        public void onFailure(Call<JsonObject> call, Throwable t) {
+                        public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
                         }
                     });

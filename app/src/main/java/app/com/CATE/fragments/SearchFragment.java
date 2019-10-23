@@ -4,6 +4,7 @@ package app.com.CATE.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import app.com.CATE.DetailsActivity;
 import app.com.CATE.interfaces.RetrofitService;
@@ -43,15 +45,6 @@ public class SearchFragment extends Fragment {
     private VideoPostAdapter adapter = null;
     ArrayList<YoutubeDataModel> listData = new ArrayList<>();
     private ProgressBar progressBar;
-    private MainActivity mainActivity;
-    //
-//
-////
-// public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-// super.onActivityCreated(savedInstanceState);
-// LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,true);
-// }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +56,6 @@ public class SearchFragment extends Fragment {
         progressBar.setVisibility(View.GONE);
 
         searchview.setSubmitButtonEnabled(true);
-        mainActivity = (MainActivity) getActivity();
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
             @Override
@@ -77,7 +69,7 @@ public class SearchFragment extends Fragment {
 
                 int lastVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
                 int itemTotalCount = recyclerView.getAdapter().getItemCount();
-                Log.e("sdsd", "ssss : " + lastVisibleItemPosition);
+                Log.e("Scrolled", "listEnd : " + lastVisibleItemPosition);
                 if (lastVisibleItemPosition == itemTotalCount - 1) {
                     progressBar.setVisibility(View.VISIBLE);
                     //리스트 마지막(바닥) 도착!!!!! 다음 페이지 데이터 로드!!
@@ -95,14 +87,14 @@ public class SearchFragment extends Fragment {
                 RetrofitService retrofitService = retrofit.create(RetrofitService.class);
                 retrofitService.getSearchVideo(target).enqueue(new Callback<JsonArray>() {
                     @Override
-                    public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                    public void onResponse(@NonNull Call<JsonArray> call,@NonNull Response<JsonArray> response) {
                         ArrayList<YoutubeDataModel> listData = new ArrayList<>();
 
-                        for (int i = 0; i < response.body().size(); i++) {
+                        for (int i = 0; i < Objects.requireNonNull(response.body()).size(); i++) {
                             JsonObject object = response.body().get(i).getAsJsonObject();
 
                             YoutubeDataModel youtubeObject = new YoutubeDataModel();
-                            String thumbnail = "";
+                            String thumbnail;
                             String video_id = "";
                             String cateName, video_kind, cateDetail;
                             int video_index, likes, dislikes;
@@ -139,7 +131,7 @@ public class SearchFragment extends Fragment {
                     }
 
                     @Override
-                    public void onFailure(Call<JsonArray> call, Throwable t) {
+                    public void onFailure(@NonNull Call<JsonArray> call,@NonNull Throwable t) {
 
                     }
                 });
@@ -172,16 +164,16 @@ public class SearchFragment extends Fragment {
                     Call<JsonObject> call = retrofitService.MakeLikeTable(MainActivity.strName, youtubeDataModel.getVideo_index());
                     call.enqueue(new Callback<JsonObject>() {
                         @Override
-                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                             JsonObject jsonObject = response.body();
                             Intent intent = new Intent(getActivity(), DetailsActivity.class);
                             intent.putExtra(YoutubeDataModel.class.toString(), youtubeDataModel);
-                            intent.putExtra("u_v_status", jsonObject.get("status").getAsInt());
+                            intent.putExtra("u_v_status", Objects.requireNonNull(jsonObject).get("status").getAsInt());
                             startActivity(intent);
                         }
 
                         @Override
-                        public void onFailure(Call<JsonObject> call, Throwable t) {
+                        public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
                         }
                     });
@@ -196,16 +188,16 @@ public class SearchFragment extends Fragment {
                     Call<JsonObject> call = retrofitService.MakeLikeTable(MainActivity.strName, youtubeDataModel.getVideo_index());
                     call.enqueue(new Callback<JsonObject>() {
                         @Override
-                        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                             JsonObject jsonObject = response.body();
                             Intent intent = new Intent(getActivity(), TwitchActivity.class);
                             intent.putExtra(YoutubeDataModel.class.toString(), youtubeDataModel);
-                            intent.putExtra("u_v_status", jsonObject.get("status").getAsInt());
+                            intent.putExtra("u_v_status", Objects.requireNonNull(jsonObject).get("status").getAsInt());
                             startActivity(intent);
                         }
 
                         @Override
-                        public void onFailure(Call<JsonObject> call, Throwable t) {
+                        public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
                         }
                     });
@@ -227,10 +219,10 @@ public class SearchFragment extends Fragment {
         Call<JsonObject> call = retrofitService.All_video(MainActivity.strName);
         call.enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+            public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                 JsonObject jsonObject = response.body();
                 try {
-                    JsonArray jsonArray = jsonObject.get("response").getAsJsonArray();
+                    JsonArray jsonArray = Objects.requireNonNull(jsonObject).get("response").getAsJsonArray();
 
                     int count = 0;
 
@@ -238,7 +230,7 @@ public class SearchFragment extends Fragment {
                         JsonObject object = jsonArray.get(count).getAsJsonObject();
 
                         YoutubeDataModel youtubeObject = new YoutubeDataModel();
-                        String thumbnail = "";
+                        String thumbnail;
                         String video_id = "";
                         String cateName, video_kind, cateDetail;
                         int video_index, likes, dislikes;
@@ -278,7 +270,7 @@ public class SearchFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
             }
         });
@@ -294,10 +286,10 @@ public class SearchFragment extends Fragment {
         Call<JsonObject> call = retrofitService.All_video(MainActivity.strName);
         call.enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+            public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                 JsonObject jsonObject = response.body();
                 try {
-                    JsonArray jsonArray = jsonObject.get("response").getAsJsonArray();
+                    JsonArray jsonArray = Objects.requireNonNull(jsonObject).get("response").getAsJsonArray();
 
                     int count = start;
 
@@ -305,7 +297,7 @@ public class SearchFragment extends Fragment {
                         JsonObject object = jsonArray.get(count).getAsJsonObject();
 
                         YoutubeDataModel youtubeObject = new YoutubeDataModel();
-                        String thumbnail = "";
+                        String thumbnail;
                         String video_id = "";
                         String cateName, video_kind, cateDetail;
                         int video_index, likes, dislikes;
@@ -344,8 +336,6 @@ public class SearchFragment extends Fragment {
                             progressBar.setVisibility(View.GONE);
                         }
                     }, 1000);
-//                    initList(listData);
-//                    mainActivity.listData = listData;
                 } catch (IndexOutOfBoundsException ea) {
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -359,7 +349,7 @@ public class SearchFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
             }
         });

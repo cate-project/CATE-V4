@@ -11,21 +11,21 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import app.com.CATE.interfaces.OnArrayClickListner;
+import app.com.CATE.interfaces.OnArrayClickListener;
 import app.com.youtubeapiv3.R;
 
 public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCategoryAdapter.ViewHolder> {
     private ArrayList<String> itemList;
     private Context context;
-    private OnArrayClickListner onArrayClickListner;
+    private OnArrayClickListener onArrayClickListener;
     private View view;
     private View tempView;
     private int i = 0;
 
-    public HorizontalCategoryAdapter(Context context, ArrayList<String> itemList, OnArrayClickListner onArrayClickListner) {
+    public HorizontalCategoryAdapter(Context context, ArrayList<String> itemList, OnArrayClickListener onArrayClickListener) {
         this.context = context;
         this.itemList = itemList;
-        this.onArrayClickListner = onArrayClickListner;
+        this.onArrayClickListener = onArrayClickListener;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCa
             view.setBackgroundColor(Color.LTGRAY);
             tempView = view;
         }
-        holder.bind(itemList.get(position), onArrayClickListner);
+        holder.bind(itemList.get(position), onArrayClickListener);
     }
 
 
@@ -68,8 +68,8 @@ public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCa
             textview = itemView.findViewById(R.id.category_textView);
         }
 
-        private void bind(final String string, final OnArrayClickListner onArrayClickListner) {
-            onArrayClickListner.onArrayClick("전체", null);
+        private void bind(final String string, final OnArrayClickListener onArrayClickListener) {
+            onArrayClickListener.onArrayClick("전체", null);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -78,7 +78,7 @@ public class HorizontalCategoryAdapter extends RecyclerView.Adapter<HorizontalCa
                         tempView.setBackground(ContextCompat.getDrawable(context, R.drawable.border));
                         i++;
                     }
-                    onArrayClickListner.onArrayClick(string, view);
+                    onArrayClickListener.onArrayClick(string, view);
                 }
             });
         }

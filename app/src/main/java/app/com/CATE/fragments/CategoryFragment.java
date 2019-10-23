@@ -4,16 +4,16 @@ package app.com.CATE.fragments;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -29,8 +29,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import app.com.CATE.MainActivity;
 import app.com.CATE.interfaces.RetrofitService;
@@ -42,7 +42,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,9 +49,9 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class CategoryFragment extends ListFragment {
 
     private CategoryAdapter adapter = null;
-    private List<CategoryModel> categoryList;
     private MainActivity mainActivity;
     private SparseBooleanArray mSelectedItems = new SparseBooleanArray(0);
+    ArrayList<CategoryModel> categoryList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,7 +59,7 @@ public class CategoryFragment extends ListFragment {
         // Adapter 생성 및 Adapter 지정.
         adapter = new CategoryAdapter();
         mainActivity = (MainActivity) getActivity();
-        categoryList = new ArrayList<CategoryModel>();
+        categoryList = new ArrayList<>();
 
         All_category();
 
@@ -77,10 +76,10 @@ public class CategoryFragment extends ListFragment {
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
         retrofitService.all_category(MainActivity.strName).enqueue(new Callback<JsonObject>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+            public void onResponse(@NonNull Call<JsonObject> call, @NonNull Response<JsonObject> response) {
                 JsonObject jsonObject = response.body();
                 try {
-                    JsonArray jsonArray = jsonObject.get("response").getAsJsonArray();
+                    JsonArray jsonArray = Objects.requireNonNull(jsonObject).get("response").getAsJsonArray();
                     JsonArray numberArray = jsonObject.get("category_number").getAsJsonArray();
 
                     int count = 0;
@@ -108,12 +107,12 @@ public class CategoryFragment extends ListFragment {
 
                     setListAdapter(adapter);
                 } catch (Exception e) {
-
+                    Toast.makeText(getActivity(), "카테고리 리스트 초기화 실패", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
 
             }
         });
@@ -183,17 +182,17 @@ public class CategoryFragment extends ListFragment {
         }
     }
 
-    public void addItem(String icon, String title, String desc, String channel, Boolean state) {
-        adapter.addItem(icon, title, desc, channel, state);
-    }
+//    public void addItem(String icon, String title, String desc, String channel, Boolean state) {
+//        adapter.addItem(icon, title, desc, channel, state);
+//    }
 
 
-    public class PcOfSeat extends AsyncTask<String, Void, String> {
+     class PcOfSeat extends AsyncTask<String, Void, String> {
         String target;
 
         @Override
         protected void onPreExecute() {
-            //List.php은 파싱으로 가져올 웹페이지
+            //List.php 은 파싱으로 가져올 웹페이지
             target = "http://ghkdua1829.dothome.co.kr/fow/fow_getVideo.php";
         }
 
@@ -252,7 +251,6 @@ public class CategoryFragment extends ListFragment {
         @Override
         protected void onPostExecute(String result) {
             //    Toast.makeText(mainActivity, result, Toast.LENGTH_SHORT).show();
-            mainActivity.channel = result;
 
             try {
                 ArrayList<YoutubeDataModel> listData = new ArrayList<>();
