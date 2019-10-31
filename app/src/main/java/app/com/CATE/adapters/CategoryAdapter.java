@@ -48,7 +48,6 @@ public class CategoryAdapter extends BaseAdapter {
         LinearLayout cate_list = convertView.findViewById(R.id.list_category);
         ImageView cate_id = convertView.findViewById(R.id.imageCategoryIcon);
         TextView cate_name = convertView.findViewById(R.id.text_name);
-        TextView cate_detail = convertView.findViewById(R.id.text_detail);
 
         // Data Set(listViewItemList)에서 position 에 위치한 데이터 참조 획득
         CategoryModel listViewItem = listViewItemList.get(position);
@@ -59,7 +58,7 @@ public class CategoryAdapter extends BaseAdapter {
                 cate_id.setImageResource(R.drawable.icon_movie);
                 break;
             case "게임":
-                cate_id.setImageResource(R.drawable.ic_baseline_games_24px);
+                cate_id.setImageResource(R.drawable.icon_game);
                 break;
             case "스포츠":
                 cate_id.setImageResource(R.drawable.icon_sport);
@@ -67,13 +66,29 @@ public class CategoryAdapter extends BaseAdapter {
             case "음악":
                 cate_id.setImageResource(R.drawable.icon_music);
                 break;
+            case "롤":
+                cate_id.setImageResource(R.drawable.icon_lol);
+                break;
+            case "재즈":
+                cate_id.setImageResource(R.drawable.icon_jazz);
+                break;
+            case "동물":
+                cate_id.setImageResource(R.drawable.icon_animal);
+                break;
+            case "배그":
+                cate_id.setImageResource(R.drawable.icon_battleground);
+                break;
+            case "유머":
+                cate_id.setImageResource(R.drawable.icon_humor);
+                break;
+
+
             default:
                 cate_id.setImageResource(R.drawable.ic_baseline_clear_24px);
                 break;
         }
 
         cate_name.setText(listViewItem.getName());
-        cate_detail.setText(listViewItem.getDetail());
 
         if(listViewItem.getState()) {
             cate_list.setBackgroundColor(Color.LTGRAY);

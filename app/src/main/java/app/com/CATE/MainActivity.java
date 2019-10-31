@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -24,7 +25,7 @@ import app.com.CATE.models.YoutubeDataModel;
 import app.com.youtubeapiv3.R;
 
 public class MainActivity extends AppCompatActivity {
-    public static String strName,Api;
+    public static String strID, strName,Api;
     public ViewPager viewPager = null;
     private Toolbar toolbar = null;
     public String category;
@@ -41,14 +42,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         category = intent.getStringExtra("Category");
+        strID = intent.getStringExtra("userID");
         strName = intent.getStringExtra("userName");
         Api = intent.getStringExtra("Api");
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);  // 왼쪽 버튼 사용 여부 true
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_play_arrow_24px); // 왼쪽 버튼 이미지 설정
-        actionBar.setDisplayShowTitleEnabled(false);    // 타이틀 안보이게 하기
+//        ActionBar actionBar = getSupportActionBar();
+//        Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);  // 왼쪽 버튼 사용 여부 true
+//        actionBar.setHomeAsUpIndicator(R.drawable.ic_play_arrow_24px); // 왼쪽 버튼 이미지 설정
+//        actionBar.setDisplayShowTitleEnabled(false);    // 타이틀 안보이게 하기
 
         likeVideoIntent = new Intent(MainActivity.this, LibraryLikeVideoActivity.class);
         LibraryCommentIntent = new Intent(MainActivity.this, LibraryCommentActivity.class);
@@ -99,16 +101,23 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:    // 검색 버튼
                 Snackbar.make(toolbar, "Menu pressed", Snackbar.LENGTH_SHORT).show();
                 return true;
+
             case R.id.menu_add: // 추가 버튼
                 Snackbar.make(toolbar, "Search menu pressed", Snackbar.LENGTH_SHORT).show();
                 AddDialog dialog = new AddDialog(this);
                 dialog.show();
                 return true;
-            case R.id.menu_account: // 계정 버튼
-                Snackbar.make(toolbar, "Account menu pressed", Snackbar.LENGTH_SHORT).show();
-                return true;
-            case R.id.menu_logout:// 로그아웃 버튼
 
+            case R.id.menu_account: // 계정 버튼
+//                Snackbar.make(toolbar, "Account menu pressed", Snackbar.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("내 정보")
+                        .setMessage("\n" + "아이디 : " +  strID + "\n" + "닉네임 : " + strName);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                return true;
+
+            case R.id.menu_logout:// 로그아웃 버튼
                 Snackbar.make(toolbar, "Logout menu pressed", Snackbar.LENGTH_SHORT).show();
                 SharedPreferences.Editor editor=LoginActivity.loginInformation.edit();
                 editor.clear();
