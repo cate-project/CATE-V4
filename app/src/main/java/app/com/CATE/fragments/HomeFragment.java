@@ -192,7 +192,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
                 try {
-                    for(int i=start; i < start+3; i++) {
+                    for(int i=start; i < start+15; i++) {
                         JsonObject object = Objects.requireNonNull(response.body()).get(i).getAsJsonObject();
 
                         YoutubeDataModel youtubeObject = new YoutubeDataModel();
@@ -279,7 +279,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
                         try {
-                            for (int i = 0; i < 3; i++) {
+                            for (int i = 0; i < 15; i++) {
                                 JsonObject object = Objects.requireNonNull(response.body()).get(i).getAsJsonObject();
 
                                 YoutubeDataModel youtubeObject = new YoutubeDataModel();

@@ -226,7 +226,7 @@ public class SearchFragment extends Fragment {
 
                     int count = 0;
 
-                    while (count < 3) {
+                    while (count < 15) {
                         JsonObject object = jsonArray.get(count).getAsJsonObject();
 
                         YoutubeDataModel youtubeObject = new YoutubeDataModel();
@@ -293,7 +293,7 @@ public class SearchFragment extends Fragment {
 
                     int count = start;
 
-                    while (count < start + 3) {
+                    while (count < start + 15) {
                         JsonObject object = jsonArray.get(count).getAsJsonObject();
 
                         YoutubeDataModel youtubeObject = new YoutubeDataModel();
