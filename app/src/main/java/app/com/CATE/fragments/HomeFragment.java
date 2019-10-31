@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -65,6 +66,8 @@ public class HomeFragment extends Fragment {
     public MainActivity mainActivity;
     private ProgressBar progressBar, progressBarStart;
     ArrayList<String> arrayList = new ArrayList<>();
+
+    PullRefreshLayout loading;
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -139,6 +142,25 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
 
+            }
+        });
+
+        loading= (PullRefreshLayout)view.findViewById(R.id.swipeRefreshLayout);
+
+        loading.setRefreshStyle(PullRefreshLayout.STYLE_WATER_DROP);
+
+        loading.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+        //Thread - 1초 후 로딩 종료
+                init(arrayList);
+                Handler delayHandler = new Handler();
+                delayHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        loading.setRefreshing(false);
+                    }
+                },1000);
             }
         });
 

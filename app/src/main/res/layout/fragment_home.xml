@@ -40,6 +40,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="700dp"/>
+     <com.baoyz.widget.PullRefreshLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:id="@+id/swipeRefreshLayout">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mList_videos"
@@ -48,6 +52,7 @@
             android:layout_weight="1"
             android:scrollbars="vertical"/>
 
+     </com.baoyz.widget.PullRefreshLayout>
         <ProgressBar
             android:id="@+id/progressBarHome"
             android:layout_width="match_parent"
