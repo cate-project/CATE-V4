@@ -231,7 +231,7 @@ public class HomeFragment extends Fragment {
                         @Override
                         public void run() {
                             adapter.notifyDataSetChanged();
-                            progressBar.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.VISIBLE);
                         }
                     },1000);
                 } catch(IndexOutOfBoundsException ea){
@@ -278,6 +278,7 @@ public class HomeFragment extends Fragment {
                 retrofitService.getCategoryVideo(category, sortBy).enqueue(new Callback<JsonArray>() {
                     @Override
                     public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
+                        mListData = new ArrayList<>();
                         try {
                             for (int i = 0; i < 15; i++) {
                                 JsonObject object = Objects.requireNonNull(response.body()).get(i).getAsJsonObject();
