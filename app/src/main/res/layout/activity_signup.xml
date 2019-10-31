@@ -71,7 +71,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:onClick="insert"
-        android:text="@string/request_register" />
+        android:text="@string/request_register"
+        android:background="@drawable/button"/>
 
 
 </LinearLayout>
