@@ -165,7 +165,7 @@ public class HomeFragment extends Fragment {
 
                 if (lastVisibleItemPosition == itemTotalCount-1) {
                     do{
-//                        progressBar.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.VISIBLE);
                         collision=false;
 
                         category_scroll_plus(lastVisibleItemPosition + 1);
@@ -239,7 +239,7 @@ public class HomeFragment extends Fragment {
                         @Override
                         public void run() {
                             adapter.notifyDataSetChanged();
-//                            Toast.makeText(getContext(), "더이상 동영상이 없습니다.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "더이상 동영상이 없습니다.", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     },1000);
