@@ -71,7 +71,7 @@ public class SearchFragment extends Fragment {
                 int lastVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
                 int itemTotalCount = recyclerView.getAdapter().getItemCount();
                 Log.e("Scrolled", "listEnd : " + lastVisibleItemPosition);
-                if (lastVisibleItemPosition == itemTotalCount - 1) {
+                if (lastVisibleItemPosition == itemTotalCount - 1 && mLock==true) {
                     //리스트 마지막(바닥) 도착!!!!! 다음 페이지 데이터 로드!!
                     All_video(lastVisibleItemPosition + 1);
                 }
