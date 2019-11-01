@@ -45,7 +45,7 @@ public class SearchFragment extends Fragment {
     private VideoPostAdapter adapter = null;
     ArrayList<YoutubeDataModel> listData = new ArrayList<>();
     private ProgressBar progressBar;
-
+    private boolean mLock;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class SearchFragment extends Fragment {
         progressBar = view.findViewById(R.id.progressbar);
         progressBar.setVisibility(View.GONE);
 
+        mLock=true;
         searchview.setSubmitButtonEnabled(true);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
@@ -71,7 +72,6 @@ public class SearchFragment extends Fragment {
                 int itemTotalCount = recyclerView.getAdapter().getItemCount();
                 Log.e("Scrolled", "listEnd : " + lastVisibleItemPosition);
                 if (lastVisibleItemPosition == itemTotalCount - 1) {
-                    progressBar.setVisibility(View.VISIBLE);
                     //리스트 마지막(바닥) 도착!!!!! 다음 페이지 데이터 로드!!
                     All_video(lastVisibleItemPosition + 1);
                 }
@@ -277,6 +277,8 @@ public class SearchFragment extends Fragment {
     }
 
     public void All_video(final int start) {
+        progressBar.setVisibility(View.VISIBLE);
+        mLock=false;
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(RetrofitService.URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -333,6 +335,7 @@ public class SearchFragment extends Fragment {
                         @Override
                         public void run() {
                             adapter.notifyDataSetChanged();
+                            mLock=true;
                             progressBar.setVisibility(View.GONE);
                         }
                     }, 1000);
@@ -341,6 +344,7 @@ public class SearchFragment extends Fragment {
                         @Override
                         public void run() {
                             adapter.notifyDataSetChanged();
+                            mLock=true;
                             Toast.makeText(getContext(), "더이상 동영상이 없습니다.", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
@@ -350,7 +354,7 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<JsonObject> call, @NonNull Throwable t) {
-
+                mLock=true;
             }
         });
     }

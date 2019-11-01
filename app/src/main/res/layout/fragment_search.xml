@@ -13,9 +13,9 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/searchList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/progressbar"
+            android:layout_height="match_parent"
             android:layout_below="@+id/searching"
+            android:layout_above="@id/progressbar"
             android:layout_alignParentStart="true">
         </android.support.v7.widget.RecyclerView>
 

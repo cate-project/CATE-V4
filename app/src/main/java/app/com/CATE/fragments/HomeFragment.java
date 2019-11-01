@@ -52,6 +52,8 @@ public class HomeFragment extends Fragment {
     private ArrayList<YoutubeDataModel> mListData = new ArrayList<>();
     private ArrayList<YoutubeDataModel> nListData = new ArrayList<>();
 
+    public static int A;
+    private boolean mLock;
     String userID;
     String category_selected;
     boolean collision=true;
@@ -95,6 +97,7 @@ public class HomeFragment extends Fragment {
 
         initList(nListData);
 
+        mLock=true;
 
         userID = MainActivity.strName;
 
@@ -169,13 +172,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (!mList_videos.canScrollVertically(-1)) {
-                    Log.i(TAG, "Top of list");
-                } else if (!mList_videos.canScrollVertically(1)) {
-                    Log.i(TAG, "End of list");
-                } else {
-                    Log.i(TAG, "idle");
-                }
             }
 
             @Override
@@ -185,13 +181,9 @@ public class HomeFragment extends Fragment {
                 int lastVisibleItemPosition = ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
                 int itemTotalCount = recyclerView.getAdapter().getItemCount();
 
-                if (lastVisibleItemPosition == itemTotalCount-1) {
-                    do{
-                        progressBar.setVisibility(View.VISIBLE);
-                        collision=false;
+                if (lastVisibleItemPosition == itemTotalCount-1 && mLock==true) {
 
                         category_scroll_plus(lastVisibleItemPosition + 1);
-                    }while(collision);
 
                     //리스트 마지막(바닥) 도착!!!!! 다음 페이지 데이터 로드!!
                 }
@@ -203,7 +195,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void category_scroll_plus(final int start){
-
+        mLock=false;
+        progressBar.setVisibility(View.VISIBLE);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(RetrofitService.URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -215,6 +208,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(@NonNull Call<JsonArray> call, @NonNull Response<JsonArray> response) {
                 try {
                     for(int i=start; i < start+15; i++) {
+                        A=i;
                         JsonObject object = Objects.requireNonNull(response.body()).get(i).getAsJsonObject();
 
                         YoutubeDataModel youtubeObject = new YoutubeDataModel();
@@ -253,15 +247,20 @@ public class HomeFragment extends Fragment {
                         @Override
                         public void run() {
                             adapter.notifyDataSetChanged();
-                            progressBar.setVisibility(View.VISIBLE);
+                            mLock=true;
+                            progressBar.setVisibility(View.GONE);
                         }
                     },1000);
                 } catch(IndexOutOfBoundsException ea){
+
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
+                            if(A==start){
+                                Toast.makeText(getContext(), "더이상 동영상이 없습니다.", Toast.LENGTH_SHORT).show();
+                            }
                             adapter.notifyDataSetChanged();
-                            Toast.makeText(getContext(), "더이상 동영상이 없습니다.", Toast.LENGTH_SHORT).show();
+                            mLock=true;
                             progressBar.setVisibility(View.GONE);
                         }
                     },1000);
@@ -271,7 +270,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<JsonArray> call, @NonNull Throwable t) {
-
+                mLock=true;
             }
         });
     }
