@@ -10,7 +10,10 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -19,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import app.com.CATE.requests.VideoChugaRequest;
 import app.com.youtubeapiv3.R;
@@ -37,13 +42,15 @@ public class AddDialog extends Dialog implements View.OnClickListener {
 
     private TextInputEditText titleEt;
     private TextInputEditText urlEt;
-    private TextInputEditText tagEt;
+    private Spinner spinnerCate;
     private String kind_video, kind_thumbnail;
     private Button twitchRb;
     private Button youtubeRb;
     private Button confirmBt;
-
+    ArrayList<String> arrayList;
     private String name;
+    private String cate;
+    ArrayAdapter<String> arrayAdapter;
 
     private Handler handler;
 
@@ -86,12 +93,36 @@ public class AddDialog extends Dialog implements View.OnClickListener {
 
         titleEt = findViewById(R.id.title_input);
         urlEt = findViewById(R.id.url_input);
-        tagEt = findViewById(R.id.category_input);
+        spinnerCate = findViewById(R.id.spinnerCate);
 
         confirmBt = findViewById(R.id.button_confirm);
 
-//        youtubeRb.setOnClickListener(this);
-//        twitchRb.setOnClickListener(this);
+
+        arrayList = new ArrayList<>();
+        arrayList.add("롤");
+        arrayList.add("재즈");
+        arrayList.add("게임");
+        arrayList.add("동물");
+        arrayList.add("배그");
+        arrayList.add("유머");
+        arrayList.add("음악");
+
+        arrayAdapter = new ArrayAdapter<>(context,
+                android.R.layout.simple_spinner_dropdown_item,
+                arrayList);
+        spinnerCate.setAdapter(arrayAdapter);
+        spinnerCate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                cate = arrayList.get(i);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+
+        출처: https://bottlecok.tistory.com/63 [잡캐의 IT 꿀팁]
         confirmBt.setOnClickListener(this);
 
         if (name != null) {
@@ -103,46 +134,6 @@ public class AddDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_confirm:
-                //  Toast.makeText(context,kind_video,Toast.LENGTH_SHORT).show();
-//                Response.Listener<String> responseListener = new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        try {
-//                            JSONObject jsonResponse = new JSONObject(response);
-//                            boolean success = jsonResponse.getBoolean("success");
-//
-//
-//                            //서버에서 보내준 값이 true이면?
-//                            if (success) {
-//
-//                                Toast.makeText(context, "비디오 추가하셨습니다.", Toast.LENGTH_SHORT).show();
-//
-//                                //Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
-//
-//                                String userMoney = jsonResponse.getString("userMoney");
-//
-//
-//
-//
-//                            } else {//충전 실패시
-//                                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//                                builder.setMessage("추가에 실패하셨습니다.")
-//                                        .setNegativeButton("retry", null)
-//                                        .create()
-//                                        .show();
-//
-//
-//                            }
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                };
-//                ChargeRequest ChargeRequest = new ChargeRequest(strName, chargeMoney, responseListener);
-//                RequestQueue queue = Volley.newRequestQueue(ChargeActivity.this);
-//                queue.add(ChargeRequest);
-
                 final Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -155,11 +146,6 @@ public class AddDialog extends Dialog implements View.OnClickListener {
                             if (success) {
 
                                 Toast.makeText(context, "비디오 추가하셨습니다.", Toast.LENGTH_SHORT).show();
-
-                                //Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_SHORT).show();
-
-                                String userMoney = jsonResponse.getString("userMoney");
-
 
                             } else {//충전 실패시
                                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -179,12 +165,11 @@ public class AddDialog extends Dialog implements View.OnClickListener {
 
                 //
                 if (urlEt.getText().toString().indexOf("www.youtube.com") > 0) {
-
                     kind_video = "YOUTUBE";
                     kind_thumbnail = "https://i.ytimg.com/vi/" + urlEt.getText().toString().substring(urlEt.getText().toString().indexOf("=") + 1) + "/mqdefault.jpg";
 
                     VideoChugaRequest VideoChugaRequest = new VideoChugaRequest(titleEt.getText().toString(), urlEt.getText().toString(),
-                            tagEt.getText().toString(), kind_video, MainActivity.strName, kind_thumbnail, responseListener);
+                            cate, kind_video, MainActivity.strName, kind_thumbnail, responseListener);
                     RequestQueue queue = Volley.newRequestQueue(context);
                     queue.add(VideoChugaRequest);
                     cancel();
@@ -225,7 +210,7 @@ public class AddDialog extends Dialog implements View.OnClickListener {
                     @Override
                     public void handleMessage(Message msg) {
                         VideoChugaRequest VideoChugaRequest = new VideoChugaRequest(titleEt.getText().toString(), urlEt.getText().toString(),
-                                tagEt.getText().toString(), kind_video, MainActivity.strName, kind_thumbnail, responseListener);
+                                cate, kind_video, MainActivity.strName, kind_thumbnail, responseListener);
                         RequestQueue queue = Volley.newRequestQueue(context);
                         queue.add(VideoChugaRequest);
                         cancel();
